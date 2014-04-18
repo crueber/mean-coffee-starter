@@ -41,7 +41,10 @@ module.exports = (app) ->
     res.locals.secrets = secrets
     next()
   app.use flash()
-  app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
+  if app.get('env') == 'production'
+    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
+  else
+    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
   app.use (req, res, next) ->
     return next()  if req.method isnt "GET"
     path = req.path.split("/")[1]

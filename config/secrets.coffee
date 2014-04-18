@@ -1,5 +1,5 @@
 module.exports =
-  sessionSecret: process.env.SESSION_SECRET or "lrar"
+  sessionSecret: process.env.SESSION_SECRET or "meancoffestarter"
   sendgrid:
     user: process.env.SENDGRID_USER or "hslogin"
     password: process.env.SENDGRID_PASSWORD or "hspassword00"

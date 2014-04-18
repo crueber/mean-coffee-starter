@@ -9,4 +9,7 @@
  * at the bottom of the compiled file.
  */
 
-//= require main
+//= require swallow
+//= require initialize
+//= require route
+//= require_tree ./controllers
