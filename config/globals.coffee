@@ -7,6 +7,7 @@ global.constant.one_minute = constant.one_second * 60
 global.constant.one_hour   = constant.one_minute * 60
 global.constant.one_day    = constant.one_hour * 24
 global.constant.one_week   = constant.one_hour * 7
+global.logger = require('./logger')
 
 ###
 # Application Globals Setup

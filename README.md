@@ -24,6 +24,7 @@ If you're curious about what's different from Sahat's starter kit and this one, 
 * Extra modules: CoffeeScript, Nodemon, Bower, and Grunt
 * No generator to change OAuth- No reason to second guess the intentions of the developer.
 * CSRF removed. Unnecessary when dealing with SPA applications.
+* Added winston, and set logger to a global. One needs a logger in the rest of the app!
 
 What You Need
 -------------
@@ -135,6 +136,7 @@ List of Packages
 | inquirer                        | Interactive command line interface for generator. |
 | colors                          | Pretty output colors for generator. |
 | [Nodemon](https://github.com/remy/nodemon) | Run node while watching for changes. |
+| Winston                         | The logger for the rest of the app. |
 
 Useful Tools and Resources
 --------------------------
