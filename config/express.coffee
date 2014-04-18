@@ -20,7 +20,7 @@ module.exports = (app) ->
   app.use connectAssets(
     paths: [ "public/css", "public/js" ]
     helperContext: app.locals
-    buildDir: __dirname + "/../.tmp"
+    buildDir: ".tmp"
   )
   app.use compress()
   app.use favicon()

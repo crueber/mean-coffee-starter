@@ -1,6 +1,5 @@
 
-angular.module('mean', ['ngRoute', 'ngSanitize']);
+angular.module('mean', ['ngRoute', 'ngSanitize', 'restangular']);
 
-$(document).ready ->
-
-  # Place JavaScript code here...
+# $(document).ready ->
+#   # Place JavaScript code here...
