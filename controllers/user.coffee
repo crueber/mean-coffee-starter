@@ -3,7 +3,6 @@ async      = require("async")
 crypto     = require("crypto")
 nodemailer = require("nodemailer")
 passport   = require("passport")
-User       = require("../models/User")
 secrets    = require("../config/secrets")
 
 ###

@@ -19,6 +19,7 @@ mongoose.connection.on('error', function() {
   console.error('✗ MongoDB Connection Error.');
 });
 
+require('./models')
 require('./config/express')(app);
 require('./config/routes')(app);
 
