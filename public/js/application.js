@@ -12,4 +12,4 @@
 //= require swallow
 //= require initialize
 //= require route
-//= require_tree ./controllers
+//= require_tree controllers
