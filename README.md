@@ -21,7 +21,7 @@ If you're curious about what's different from Sahat's starter kit and this one, 
 * Major structural changes that incorporate best practices for large/complex ExpressJS applications.
 * Only two OAuth agents are available: LinkedIn and Google. Local is available.
 * No third party services: Facebook, Github, Twitter, Venmo, Stripe, FourSquare, Tumblr, Steam.
-* Extra modules: CoffeeScript, Nodemon, Bower. Soon to be Grunt.
+* Extra modules: CoffeeScript, Nodemon, Bower, and Grunt
 * No generator to change OAuth- No reason to second guess the intentions of the developer.
 * CSRF removed. Unnecessary when dealing with SPA applications.
 

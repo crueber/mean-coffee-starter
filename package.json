@@ -51,6 +51,10 @@
     "mstring": "^0.1.2",
     "inquirer": "^0.4.1",
     "colors": "^0.6.2",
-    "nodemon": "^1.0.17"
+    "nodemon": "^1.0.17",
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-nodemon": "^0.2.1",
+    "grunt-concurrent": "^0.5.0"
   }
 }
