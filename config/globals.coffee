@@ -14,7 +14,7 @@ global.constant.one_week   = constant.one_hour * 7
 module.exports = (app) ->
   application_globals =
     'port':        process.env.PORT or 3000
-    'mongo_db':    process.env.MONGODB or "mongodb://localhost:27017/loanroom"
+    'mongo_db':    process.env.MONGODB or "mongodb://localhost:27017/meanstart"
     'views':       path.join(__dirname, "/../views")
     'view engine': 'jade'
     'title':       'MEAN Coffee Baseline'
