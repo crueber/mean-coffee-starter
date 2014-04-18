@@ -1,5 +1,4 @@
 secrets     = require("../config/secrets")
-User        = require("../models/User")
 querystring = require("querystring")
 validator   = require("validator")
 async       = require("async")

@@ -3,7 +3,6 @@ passport         = require("passport")
 LocalStrategy    = require("passport-local").Strategy
 GoogleStrategy   = require("passport-google-oauth").OAuth2Strategy
 LinkedInStrategy = require("passport-linkedin-oauth2").Strategy
-User             = require("../models/User")
 secrets          = require("./secrets")
 
 passport.serializeUser (user, done) ->
