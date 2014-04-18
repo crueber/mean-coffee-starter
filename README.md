@@ -33,6 +33,7 @@ What You Need
 * Bower and Grunt packages installed globally via NPM, and accessible via command line.
 * MongoDB >2.2 installed.
 * A strong knowledge of how to code in both the web browser and server spaces.
+  * If you don't have this, you are going to be very confused by this setup.
 
 Features
 --------
