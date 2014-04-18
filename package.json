@@ -1,0 +1,59 @@
+{
+  "name": "mean-coffee-starter",
+  "version": "0.9.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crueber/mean-coffee-starter.git"
+  },
+  "authors": [
+    "Christopher Rueber <crueber@gmail.com>"
+  ],
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "async": "^0.7.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "cheerio": "^0.15.0",
+    "connect-assets": "^3.0.0-beta2",
+    "connect-mongo": "^0.4.0",
+    "csso": "^1.3.11",
+    "express": "^4.0.0",
+    "body-parser": "^1.0.2",
+    "cookie-parser": "^1.0.1",
+    "static-favicon": "^1.0.2",
+    "express-session": "^1.0.2",
+    "morgan": "^1.0.0",
+    "compression": "^1.0.1",
+    "errorhandler": "^1.0.0",
+    "method-override": "^1.0.0",
+    "express-flash": "^0.0.2",
+    "express-validator": "^2.1.1",
+    "github-api": "^0.7.0",
+    "jade": "^1.3.1",
+    "less": "^1.7.0",
+    "mongoose": "^3.8.8",
+    "node-linkedin": "^0.1.6",
+    "nodemailer": "^0.6.2",
+    "passport": "^0.2.0",
+    "passport-google-oauth": "^0.1.5",
+    "passport-linkedin-oauth2": "^1.1.1",
+    "passport-local": "^1.0.0",
+    "passport-oauth": "^1.0.0",
+    "request": "^2.34.0",
+    "underscore": "^1.6.0",
+    "uglify-js": "^2.4.12",
+    "validator": "^3.9.0",
+    "coffee-script": "^1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "chai": "^1.9.1",
+    "supertest": "^0.11.0",
+    "mstring": "^0.1.2",
+    "inquirer": "^0.4.1",
+    "colors": "^0.6.2",
+    "nodemon": "^1.0.17"
+  }
+}
