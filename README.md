@@ -170,7 +170,7 @@ Recommended Node.js Libraries
 Recommended Client-side Libraries
 ---------------------------------
 
-Coming soon...
+- [selectize.js](http://brianreavis.github.io/selectize.js/) - Similar to Chosen, Select 2, et al. Textbox/Select hybrid.
 
 
 NodeJS Pro Tips
