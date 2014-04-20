@@ -22,7 +22,6 @@ userSchema = new mongoose.Schema(
 
 userSchema.plugin(plugin.createdOn, { index: true });
 userSchema.plugin(plugin.updatedOn, { index: true });
-userSchema.plugin(plugin.deletedOn, { index: true });
 
 
 ###

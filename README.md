@@ -7,13 +7,11 @@ A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This
 
 I'm going to spare you all the reasons why this was built, because you should go check out Sahat's intro if you're really interested in that; It is an extremely thorough introduction. Suffice it to say, this rewrite focuses on a different avenue: Single Page Applications written with Angular. It wouldn't be very hard to convert it over to Ember or Backbone or whatever you prefer, should you want to go a different route than Angular.
 
-Guiding Principles:
+Boilerplate Guiding Principles:
 
-* Speed of Development
-* Node Best Practices
-* Simplicity
-* Generic
-* Reusable
+* Node *Best Practices*
+* *Speed of Development*
+* *Simple*, but *Complete*
 
 If you're curious about what's different from Sahat's starter kit and this one, here are the primary bits:
 
@@ -162,16 +160,14 @@ Recommended Design Resources
 - [Creative Link Effects](http://tympanus.net/Development/CreativeLinkEffects/) - Beautiful link effects in CSS.
 - [Medium Scroll Effect](http://codepen.io/andreasstorm/pen/pyjEh) - Fade in/out header background image as you scroll.
 
-Recommended Node.js Libraries
------------------------------
+Useful Server-side Libraries
+----------------------------
 
-- [geoip-lite](https://github.com/bluesmoon/node-geoip) - Geolocation coordinates from IP address.
 - [Filesize.js](http://filesizejs.com/) - Pretty file sizes, e.g. `filesize(265318); // "265.32 kB"`.
 - [Numeral.js](http://numeraljs.com) - Library for formatting and manipulating numbers.
-- [node-taglib](https://github.com/nikhilm/node-taglib) - Library for reading the meta-data of several popular audio formats.
 
-Recommended Client-side Libraries
----------------------------------
+Useful Client-side Libraries
+----------------------------
 
 - [selectize.js](http://brianreavis.github.io/selectize.js/) - Similar to Chosen, Select 2, et al. Textbox/Select hybrid.
 
