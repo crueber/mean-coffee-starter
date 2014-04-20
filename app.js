@@ -34,7 +34,7 @@ app.use(function(req, res) {
 app.use(require('errorhandler')());
 
 app.listen(app.get('port'), function() {
-  logger.debug("✔ Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
+  logger.info("✔ Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
 });
 
 module.exports = app;

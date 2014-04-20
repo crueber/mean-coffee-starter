@@ -7,7 +7,6 @@ module.exports = (app) ->
   ###
   # Application routes.
   ###
-
   app.get "/", passportConf.isAuthenticated, controllers.home.index
   app.get "/login", controllers.user.getLogin
   app.post "/login", controllers.user.postLogin

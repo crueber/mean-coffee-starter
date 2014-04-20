@@ -1,9 +1,17 @@
+path = require 'path'
+fs   = require 'fs'
+
+excludes = [ 'index' ]
+controllers = {}
 
 ###
 # Load controllers.
 ###
-module.exports =
-  home: require './home'
-  user: require './user'
-  api: require './api'
-  contact: require './contact'
+files = fs.readdirSync(__dirname)
+for file in files
+  name = path.basename(file, '.coffee')
+  if excludes.indexOf(name) == -1
+    logger.debug 'Loading controller: ' + name
+    controllers[name] = require './' + name
+
+module.exports = controllers
