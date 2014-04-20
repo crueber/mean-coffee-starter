@@ -25,6 +25,10 @@ module.exports = (app) ->
   app.use compress()
   app.use favicon()
   app.use logger("dev")
+  if app.get('env') == 'production'
+    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
+  else
+    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
   app.use bodyParser.json()
   app.use bodyParser.urlencoded()
   app.use expressValidator()
@@ -41,10 +45,6 @@ module.exports = (app) ->
     res.locals.secrets = secrets
     next()
   app.use flash()
-  if app.get('env') == 'production'
-    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
-  else
-    app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
   app.use (req, res, next) ->
     return next()  if req.method isnt "GET"
     path = req.path.split("/")[1]
