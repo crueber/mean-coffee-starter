@@ -9,9 +9,9 @@ I'm going to spare you all the reasons why this was built, because you should go
 
 Boilerplate Guiding Principles:
 
-* Node *Best Practices*
-* *Speed of Development*
-* *Simple*, but *Complete*
+* Node **Best Practices**
+* **Speed of Development**
+* **Simple**, but **Complete**
 
 If you're curious about what's different from Sahat's starter kit and this one, here are the primary bits:
 
