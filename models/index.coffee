@@ -1,5 +1,12 @@
+path = require 'path'
+fs   = require 'fs'
 
-module.exports = models = 
-  User: require('./User')
+excludes = [ 'index' ]
+module.exports = models = {}
 
-global[model_name] = model for model_name, model of models
+for file in fs.readdirSync(__dirname)
+  name = path.basename(file, '.coffee')
+  return if excludes.indexOf(name) != -1
+  logger.debug 'Loading model: ' + name
+  models[name] = require './' + name
+  global[name] = models[name]
