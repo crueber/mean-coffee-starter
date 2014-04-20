@@ -1,6 +1,7 @@
-mongoose = require("mongoose")
-bcrypt   = require("bcrypt-nodejs")
-crypto   = require("crypto")
+mongoose = require "mongoose"
+bcrypt   = require "bcrypt-nodejs"
+crypto   = require "crypto"
+plugin   = require './plugins'
 
 userSchema = new mongoose.Schema(
   email: { type: String, unique: true, lowercase: true}
@@ -18,6 +19,11 @@ userSchema = new mongoose.Schema(
   linkedin: String
   tokens: Array
 )
+
+userSchema.plugin(plugin.createdOn, { index: true });
+userSchema.plugin(plugin.updatedOn, { index: true });
+userSchema.plugin(plugin.deletedOn, { index: true });
+
 
 ###
 Hash the password for security.

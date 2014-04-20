@@ -1,7 +1,7 @@
 path = require 'path'
 fs   = require 'fs'
 
-excludes = [ 'index' ]
+excludes = [ 'index', 'plugins' ]
 module.exports = models = {}
 
 for file in fs.readdirSync(__dirname)
