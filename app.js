@@ -17,6 +17,8 @@ mongoose.connect(app.get('mongo_db'));
 mongoose.connection.on('error', function() {
   console.error('✗ MongoDB Connection Error.');
 });
+if (app.get('env') === 'development') mongoose.set('debug', true)
+
 
 require('./models')
 require('./config/express')(app);
