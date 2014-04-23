@@ -1,4 +1,3 @@
-_                = require("underscore")
 passport         = require("passport")
 LocalStrategy    = require("passport-local").Strategy
 GoogleStrategy   = require("passport-google-oauth").OAuth2Strategy
@@ -171,7 +170,7 @@ exports.isAuthenticated = (req, res, next) ->
 # Authorization Required middleware.
 exports.isAuthorized = (req, res, next) ->
   provider = req.path.split("/").slice(-1)[0]
-  if _.findWhere(req.user.tokens, kind: provider)
+  if _.find(req.user.tokens, kind: provider)
     next()
   else
     res.redirect "/auth/" + provider

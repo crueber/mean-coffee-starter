@@ -39,11 +39,11 @@
     "passport-local": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "request": "^2.34.0",
-    "underscore": "^1.6.0",
     "uglify-js": "^2.4.12",
     "validator": "^3.9.0",
     "coffee-script": "^1.7.1",
-    "winston": "^0.7.3"
+    "winston": "^0.7.3",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "mocha": "^1.18.2",

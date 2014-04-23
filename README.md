@@ -165,6 +165,8 @@ Useful Server-side Libraries
 
 - [Filesize.js](http://filesizejs.com/) - Pretty file sizes, e.g. `filesize(265318); // "265.32 kB"`.
 - [Numeral.js](http://numeraljs.com) - Library for formatting and manipulating numbers.
+- Moment.js - Date parsing library.
+- Node-UUID - RFC 4122 UUID Generator
 
 Useful Client-side Libraries
 ----------------------------

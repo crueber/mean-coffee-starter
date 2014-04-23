@@ -1,5 +1,6 @@
-path = require("path")
+path = require "path"
 
+global._ = require 'lodash'
 global.constant = {}
 global.constant.one_ms     = 1
 global.constant.one_second = constant.one_ms * 1000

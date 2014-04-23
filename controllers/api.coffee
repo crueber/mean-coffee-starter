@@ -4,7 +4,6 @@ validator   = require("validator")
 async       = require("async")
 cheerio     = require("cheerio")
 request     = require("request")
-_           = require("underscore")
 Linkedin    = require("node-linkedin")(secrets.linkedin.clientID, secrets.linkedin.clientSecret, secrets.linkedin.callbackURL)
 
 ###
@@ -36,7 +35,7 @@ GET /api/linkedin
 LinkedIn API example.
 ###
 exports.getLinkedin = (req, res, next) ->
-  token = _.findWhere(req.user.tokens, kind: "linkedin")
+  token = _.find req.user.tokens, kind: "linkedin"
   linkedin = Linkedin.init(token.accessToken)
   linkedin.people.me (err, $in) ->
     return next(err)  if err

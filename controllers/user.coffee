@@ -1,4 +1,3 @@
-_          = require("underscore")
 async      = require("async")
 crypto     = require("crypto")
 nodemailer = require("nodemailer")
