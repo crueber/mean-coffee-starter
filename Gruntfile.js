@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         script: 'app.js',
         options: {
           nodeArgs: ['--debug=5858'],
-          ignoredFiles: ['node_modules/**', 'views/**', '.git/**', 'public/**', 'Gruntfile.js'],
+          watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
             PORT: '3000'
