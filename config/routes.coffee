@@ -21,6 +21,7 @@ module.exports = (app) ->
   # app.post "/contact", controllers.contact.postContact
   app.get "/account", passportConf.isAuthenticated, controllers.user.getAccount
   app.post "/account/profile", passportConf.isAuthenticated, controllers.user.postUpdateProfile
+  app.get "/account/removePicture", passportConf.isAuthenticated, controllers.user.removePicture
   app.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
   app.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
   app.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, controllers.api.getLinkedin

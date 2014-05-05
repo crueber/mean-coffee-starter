@@ -1,6 +1,8 @@
 path = require "path"
 
 global._ = require 'lodash'
+global.logger = require('./logger')()
+
 global.constant = {}
 global.constant.one_ms     = 1
 global.constant.one_second = constant.one_ms * 1000
@@ -8,7 +10,6 @@ global.constant.one_minute = constant.one_second * 60
 global.constant.one_hour   = constant.one_minute * 60
 global.constant.one_day    = constant.one_hour * 24
 global.constant.one_week   = constant.one_hour * 7
-global.logger = require('./logger')()
 
 ###
 # Application Globals Setup
@@ -22,4 +23,5 @@ module.exports = (app) ->
     'title':       'MEAN Coffee Baseline'
 
   app.set key, value for key, value of application_globals
-
+  app.locals.title = app.get('title')
+  global.app = app

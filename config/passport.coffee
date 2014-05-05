@@ -105,11 +105,7 @@ passport.use new GoogleStrategy(secrets.google, (req, accessToken, refreshToken,
 # Sign in with LinkedIn.
 passport.use new LinkedInStrategy(secrets.linkedin, (req, accessToken, refreshToken, profile, done) ->
   if req.user
-    User.findOne
-      $or: [
-        { linkedin: profile.id }
-        { email: profile._json.emailAddress }
-      ]
+    User.findOne linkedin: profile.id
     , (err, existingUser) ->
       if existingUser
         req.flash "errors",

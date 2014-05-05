@@ -84,6 +84,14 @@ exports.postSignup = (req, res, next) ->
       return next(err)  if err
       res.redirect "/"
 
+exports.removePicture = (req, res) ->
+  req.user.profile.picture = ""
+  req.user.save (err) ->
+    if err
+      req.flash "errors", msg: "Unable to remove picture."
+      
+    res.redirect '/account'
+
 ###
 GET /account
 Profile page.

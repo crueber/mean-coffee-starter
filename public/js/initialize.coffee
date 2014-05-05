@@ -1,5 +1,11 @@
 # Root Module for the project.
-window.rootModule = angular.module 'mean', ['ngRoute', 'ngSanitize', 'ngAnimate', 'restangular']
+window.rootModule = angular.module 'mean', [
+  'ngRoute'
+  'ngSanitize'
+  'ngAnimate'
+  'restangular'
+  'ui.bootstrap.dropdownToggle'
+]
 
 ###
 This injector allows you to always test if there is a request in 

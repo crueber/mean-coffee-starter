@@ -3,7 +3,7 @@ module.exports = exports = deletedOnPlugin = (schema, options) ->
     deleted: Boolean
     deletedOn: Date
 
-  schema.methods.delete_now = (callback) ->
+  schema.methods.soft_delete = (callback) ->
     @deleted = true
     @deletedOn = new Date
     @save callback

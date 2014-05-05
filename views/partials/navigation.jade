@@ -1,5 +1,5 @@
 .navbar.navbar-default.navbar-fixed-top.navbar-inverse
-  .container
+  .container-fluid
     .navbar-header
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
         span.sr-only Toggle navigation
@@ -20,7 +20,7 @@
           li(class=title=='Create Account'?'active':undefined)
             a(href='/signup') Create Account
         else
-          li.dropdown(dropdown, is-open='account-dropdown', ng-click='account-dropdown=!account-dropdown')
+          li.dropdown(dropdown, is-open='account', ng-click='account=!account')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture
                 img.profile-image(src='#{user.profile.picture}')
