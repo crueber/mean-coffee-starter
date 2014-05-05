@@ -9,7 +9,7 @@ module.exports = function(grunt) {
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
-            PORT: '3000'
+            PORT: '3100'
           }
         }
       }
