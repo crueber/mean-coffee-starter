@@ -1,11 +1,6 @@
-secrets       = require("../config/secrets")
-nodemailer    = require("nodemailer")
-smtpTransport = nodemailer.createTransport("SMTP",
-  service: "SendGrid"
-  auth:
-    user: secrets.sendgrid.user
-    pass: secrets.sendgrid.password
-)
+secrets       = require "../config/secrets"
+nodemailer    = require "nodemailer"
+mailer        = require '../lib/mailer'
 
 ###
 GET /contact
@@ -29,17 +24,13 @@ exports.postContact = (req, res) ->
   if errors
     req.flash "errors", errors
     return res.redirect("/contact")
-  from = req.body.email
-  name = req.body.name
-  body = req.body.message
-  to = "your@email.com"
-  subject = "Contact Form | Hackathon Starter"
-  mailOptions =
-    to: to
-    from: from
-    subject: subject
-    text: body
-  smtpTransport.sendMail mailOptions, (err) ->
+
+  mailer.sendMail 
+    to: "your@email.com"
+    from: req.body.email
+    subject: "Contact Form | MEAN Coffee Starter"
+    text: req.body.message
+  , (err) ->
     if err
       req.flash "errors",
         msg: err.message
