@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       dev: {
         script: 'app.js',
         options: {
-          nodeArgs: ['--debug=5858'],
+          nodeArgs: ['--debug=5958'],
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
