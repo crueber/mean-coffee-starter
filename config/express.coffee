@@ -30,13 +30,15 @@ module.exports = (app) ->
   else
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
   app.use bodyParser.json()
-  app.use bodyParser.urlencoded()
+  app.use bodyParser.urlencoded(extended: true)
   app.use expressValidator()
-  app.use methodOverride()
+  app.use methodOverride('X-HTTP-Method-Override')
   app.use cookieParser()
   app.use session(
     secret: secrets.sessionSecret
     store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
+    saveUninitialized: true
+    resave: true
   )
   app.use passport.initialize()
   app.use passport.session()

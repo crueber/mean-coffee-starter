@@ -1,8 +1,9 @@
-async      = require("async")
-crypto     = require("crypto")
-nodemailer = require("nodemailer")
-passport   = require("passport")
-secrets    = require("../config/secrets")
+async         = require("async")
+crypto        = require("crypto")
+passport      = require("passport")
+secrets       = require("../config/secrets")
+
+mailTransporter = require '../lib/mailer'
 
 ###
 GET /login
@@ -218,19 +219,14 @@ exports.postReset = (req, res, next) ->
             done err, user
 
     (user, done) ->
-      smtpTransport = nodemailer.createTransport("SMTP",
-        service: "SendGrid"
-        auth:
-          user: secrets.sendgrid.user
-          pass: secrets.sendgrid.password
-      )
+      
       mailOptions =
         to: user.email
         from: "hackathon@starter.com"
         subject: "Your Hackathon Starter password has been changed"
         text: "Hello,\n\n" + "This is a confirmation that the password for your account " + user.email + " has just been changed.\n"
 
-      smtpTransport.sendMail mailOptions, (err) ->
+      transporter.sendMail mailOptions, (err) ->
         req.flash "success",
           msg: "Success! Your password has been changed."
 
@@ -281,19 +277,13 @@ exports.postForgot = (req, res, next) ->
           done err, token, user
 
     (token, user, done) ->
-      smtpTransport = nodemailer.createTransport("SMTP",
-        service: "SendGrid"
-        auth:
-          user: secrets.sendgrid.user
-          pass: secrets.sendgrid.password
-      )
       mailOptions =
         to: user.email
         from: "hackathon@starter.com"
         subject: "Reset your password on Hackathon Starter"
         text: "You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n" + "Please click on the following link, or paste this into your browser to complete the process:\n\n" + "http://" + req.headers.host + "/reset/" + token + "\n\n" + "If you did not request this, please ignore this email and your password will remain unchanged.\n"
 
-      smtpTransport.sendMail mailOptions, (err) ->
+      mailTransporter.sendMail mailOptions, (err) ->
         req.flash "info",
           msg: "An e-mail has been sent to " + user.email + " with further instructions."
 

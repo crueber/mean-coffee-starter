@@ -1,5 +1,4 @@
 secrets       = require "../config/secrets"
-nodemailer    = require "nodemailer"
 mailer        = require '../lib/mailer'
 
 ###

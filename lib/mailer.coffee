@@ -1,11 +1,14 @@
-nodemailer = require 'nodemailer'
+secrets       = require '../config/secrets'
+nodemailer    = require 'nodemailer'
+smtpTransport = require 'nodemailer-smtp-transport'
 
-Mail = nodemailer.createTransport 'smtp',
-  host: app.get 'mail_host'
-  port: app.get 'mail_port'
-  name: 'Exeras'
+transport_options = 
+  service: "SendGrid"
   auth:
-    user: app.get 'mail_username'
-    pass: app.get 'mail_password'
+    user: secrets.sendgrid.user
+    pass: secrets.sendgrid.password
 
-module.exports = Mail
+mailTransporter = nodemailer.createTransport(smtpTransport(transport_options))
+
+module.exports = mailTransporter
+
