@@ -4,7 +4,7 @@ window.rootModule = angular.module 'mean', [
   'ngSanitize'
   'ngAnimate'
   'restangular'
-  'ui.bootstrap.dropdownToggle'
+  'ui.bootstrap.dropdown'
 ]
 
 ###
