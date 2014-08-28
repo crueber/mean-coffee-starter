@@ -20,8 +20,8 @@
           li(class=title=='Create Account'?'active':undefined)
             a(href='/signup') Create Account
         else
-          li.dropdown(dropdown, is-open='account', ng-click='account=!account')
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
+          li.dropdown(on-toggle='toggled(open)')
+            a.dropdown-toggle(href='#')
               if user.profile.picture
                 img.profile-image(src='#{user.profile.picture}')
               else
