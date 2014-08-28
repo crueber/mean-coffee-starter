@@ -226,6 +226,19 @@ Contributing
 
 I agree with Sahat Yalkabov's contribution guide. This is an extremely opinionated project. Thus why I not only disconnected from his project, but completely rewrote 80% of the starter code. I wanted it to be in a form that I could get started with right away. It's not meant to be for everyone. Despite that, feel free to open an issue if you see something that you believe could be improved, and I'll give it the thumbs up or down for you to submit a pull request on it before you get started.
 
+Changelog
+---------
+
+### 1.2 (August 28th, 2014)
+- Client libraries updated to latest stable of their current major release (or minor, in the case of angular)
+
+### 1.1
+- Server side libraries updated to current stable versions.
+
+### 1.0
+- Initial release of the major alterations from Sahat's Hackathon Starter.
+
+
 License
 -------
 
