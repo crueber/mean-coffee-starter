@@ -23,7 +23,7 @@ module.exports = (app) ->
     buildDir: ".tmp"
   )
   app.use compress()
-  # app.use favicon(__dirname + '/public/favicon.ico')
+  app.use favicon(__dirname + '/../public/favicon.ico')
   app.use logger("dev")
   if app.get('env') == 'production'
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
