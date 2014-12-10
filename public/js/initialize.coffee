@@ -1,5 +1,5 @@
 # Root Module for the project.
-window.rootModule = angular.module 'mean', [
+window.rootModule = angular.module 'root', [
   'ngRoute'
   'ngSanitize'
   'ngAnimate'
