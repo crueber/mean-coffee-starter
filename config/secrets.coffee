@@ -10,7 +10,7 @@ module.exports =
     scope: [ "r_fullprofile", "r_emailaddress", "r_network" ]
     passReqToCallback: true
   google:
-    clientID: process.env.GOOGLE_ID or "814691500502-e2rapbat9j133698s4iaq4lbq8p31crt.apps.googleusercontent.com"
-    clientSecret: process.env.GOOGLE_SECRET or "vSkBtiFPDhH6KSSmwDJ0a0Q1"
+    clientID: process.env.GOOGLE_ID or "228531027374-nhgvmlmrc7bgsr7c0ptdai3u4vrdnbg1.apps.googleusercontent.com"
+    clientSecret: process.env.GOOGLE_SECRET or "ZHU-mx904OKVjnDQRDGG6HdQ"
     callbackURL: "/auth/google/callback"
     passReqToCallback: true
