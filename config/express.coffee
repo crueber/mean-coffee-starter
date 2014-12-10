@@ -3,7 +3,7 @@ cookieParser     = require("cookie-parser")
 compress         = require("compression")
 session          = require("express-session")
 bodyParser       = require("body-parser")
-favicon          = require("static-favicon")
+favicon          = require("serve-favicon")
 logger           = require("morgan")
 methodOverride   = require("method-override")
 MongoStore       = require("connect-mongo")(session: session)
@@ -23,7 +23,7 @@ module.exports = (app) ->
     buildDir: ".tmp"
   )
   app.use compress()
-  app.use favicon()
+  # app.use favicon(__dirname + '/public/favicon.ico')
   app.use logger("dev")
   if app.get('env') == 'production'
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)

@@ -14,14 +14,14 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "lodash": "~2.4.1",
-    "bootstrap": "~3.2.0",
-    "bootstrap-social": "~4.6.1",
-    "angular": "~1.2.23",
-    "angular-sanitize": "~1.2.23",
-    "angular-route": "~1.2.23",
-    "angular-animate": "~1.2.23",
+    "bootstrap": "~3.3.1",
+    "bootstrap-social": "~4.8.0",
+    "angular": "~1.2.27",
+    "angular-sanitize": "~1.2.27",
+    "angular-route": "~1.2.27",
+    "angular-animate": "~1.2.27",
     "restangular": "~1.4.0",
-    "ui-bootstrap": "~0.11.0",
+    "ui-bootstrap": "~0.12.0",
     "font-awesome": "^4.2.0"
   }
 }

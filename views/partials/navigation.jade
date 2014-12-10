@@ -15,8 +15,8 @@
           li(class=title=='Create Account'?'active':undefined)
             a(href='/signup') Create Account
         else
-          li.dropdown(on-toggle='toggled(open)')
-            a.dropdown-toggle(href='#')
+          li.dropdown(on-toggle='toggled(open)', dropdown)
+            a.dropdown-toggle(href='#', dropdown-toggle)
               if user.profile.picture
                 img.profile-image(src='#{user.profile.picture}')
               else
