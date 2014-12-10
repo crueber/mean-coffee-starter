@@ -1,21 +1,9 @@
 doctype html
 html
   head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='')
-    meta(name='author', content='')
     title #{title}
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js')
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/restangular/1.4.0/restangular.min.js')
-    script(type='text/javascript', src='/libraries/ui-bootstrap/src/dropdown/dropdown.js')
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css')
+    include partials/meta
+    include partials/cdnfiles
     != css('styles')
     != js('application')
   body(ng-app='root', ng-cloak)
@@ -25,13 +13,4 @@ html
         include partials/flash
         block content
     include partials/footer
-    script.
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    include partials/google-analytics
