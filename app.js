@@ -5,9 +5,7 @@ require('coffee-script/register') // <-- Register the coffeescript interpreter f
  */
 var secrets          = require('./config/secrets');
 var express          = require('express');
-var session          = require('express-session');
 var mongoose         = require('mongoose');
-var MongoStore       = require('connect-mongo')({ session: session });
 var passport         = require('passport');
 var passportConf     = require('./config/passport');
 var app              = express();
