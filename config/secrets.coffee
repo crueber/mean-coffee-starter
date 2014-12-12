@@ -1,8 +1,10 @@
 module.exports =
   sessionSecret: process.env.SESSION_SECRET or "meancoffestarter"
-  sendgrid:
-    user: process.env.SENDGRID_USER or "hslogin"
-    password: process.env.SENDGRID_PASSWORD or "hspassword00"
+  email: 
+    host: process.env.SMTP_HOST or '127.0.0.1'      # Mailcatcher defaults.
+    port: process.env.SMTP_PORT or 1025
+    user: process.env.SMTP_USER or "user"
+    password: process.env.SMTP_PASSWORD or "pass"
   linkedin:
     clientID: process.env.LINKEDIN_ID or "75g87qt5xvqois"
     clientSecret: process.env.LINKEDIN_SECRET or "da0F5C3MH9eKXgim"

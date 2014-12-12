@@ -3,10 +3,11 @@ nodemailer    = require 'nodemailer'
 smtpTransport = require 'nodemailer-smtp-transport'
 
 transport_options = 
-  service: "SendGrid"
+  port: secrets.email.port
+  host: secrets.email.host
   auth:
-    user: secrets.sendgrid.user
-    pass: secrets.sendgrid.password
+    user: secrets.email.user
+    pass: secrets.email.password
 
 mailTransporter = nodemailer.createTransport(smtpTransport(transport_options))
 
