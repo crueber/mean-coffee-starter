@@ -16,11 +16,13 @@ passportConf     = require("./passport")
 secrets          = require("./secrets")
 MongoStore       = require("connect-mongo")(session: session)
 
+buildDir = if app.get('env') isnt 'production' then false else ".tmp"
+
 module.exports = (app) ->
   app.use connectAssets(
     paths: [ "public/css", "public/js" ]
     helperContext: app.locals
-    buildDir: ".tmp"
+    buildDir: buildDir
   )
   app.use compress()
   app.use favicon(__dirname + '/../public/favicon.ico')
