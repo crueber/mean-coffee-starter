@@ -12,4 +12,5 @@
 //= require swallow
 //= require initialize
 //= require route
+//= require_tree templates
 //= require_tree controllers

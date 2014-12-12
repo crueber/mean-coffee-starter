@@ -1,9 +1,12 @@
 
-router = ($routeProvider) ->
-  $routeProvider.when('/', { controller: 'BaseCtrl', templateUrl: 'partials/base.html' })
-                .otherwise({redirectTo: '/'})
-                # .when('/here/:id.format?', { controller: 'HereCtrl', templateUrl: 'partials/here.html' })
+router = (stateProvider, urlRouterProvider) ->
+  urlRouterProvider.otherwise '/dashboard'
 
-router['$inject'] = ['$routeProvider']
+  stateProvider.state 'dashboard',
+    url: '/dashboard'
+    templateUrl: 'templates/base'
+    controller: 'BaseCtrl'
 
-rootModule.config router
+router.$inject = ['$stateProvider', '$urlRouterProvider']
+
+window.rootModule.config router
