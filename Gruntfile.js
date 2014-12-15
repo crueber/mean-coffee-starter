@@ -5,11 +5,11 @@ module.exports = function(grunt) {
       dev: {
         script: 'app.js',
         options: {
-          nodeArgs: ['--debug=5958'],
+          nodeArgs: ['--debug=5959'],
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
-            PORT: '3100'
+            PORT: '3200'
           }
         }
       }
@@ -25,6 +25,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('default', ['nodemon']);
+  grunt.registerTask('default', ['concurrent:dev']);
 };
