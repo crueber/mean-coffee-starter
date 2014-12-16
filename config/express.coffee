@@ -12,9 +12,8 @@ mongoose         = require("mongoose")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
-passportConf     = require("./passport")
 secrets          = require("./secrets")
-MongoStore       = require("connect-mongo")(session: session)
+# MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
 
 buildDir = if app.get('env') isnt 'production' then false else ".tmp"
@@ -39,7 +38,7 @@ module.exports = (app) ->
   app.use cookieParser()
   app.use session(
     secret: secrets.sessionSecret
-    store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
+    # store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
     # store: new RedisStore(client: app.get('redis_client'))
     saveUninitialized: true
     resave: true
