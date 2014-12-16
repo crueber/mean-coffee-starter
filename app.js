@@ -6,11 +6,17 @@ require('coffee-script/register') // <-- Register the coffeescript interpreter f
 var secrets          = require('./config/secrets');
 var express          = require('express');
 var mongoose         = require('mongoose');
+// var redis            = require('redis');
 var passport         = require('passport');
 var passportConf     = require('./config/passport');
 var app              = express();
 var globals          = require('./config/globals')(app);
 
+// var redis_client = redis.createClient(app.get('redis_port'), app.get('redis_host'), app.get('redis_opts'))
+// if (app.get('redis_auth')) {
+//   redis_client.auth(app.get('redis_auth'));
+// }
+// app.set('redis_client', redis_client);
 mongoose.connect(app.get('mongo_db'));
 mongoose.connection.on('error', function() {
   console.error('✗ MongoDB Connection Error.');

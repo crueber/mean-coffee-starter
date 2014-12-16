@@ -16,11 +16,16 @@ global.constant.one_week   = constant.one_hour * 7
 ###
 module.exports = (app) ->
   application_globals =
-    'port':        process.env.PORT or 3000
-    'mongo_db':    process.env.MONGODB or "mongodb://localhost:27017/meanstart"
-    'views':       path.join(__dirname, "/../views")
-    'view engine': 'jade'
-    'title':       'MEAN Coffee Baseline'
+    'dev':           app.get('env') isnt 'production'
+    'port':          process.env.PORT or 3000
+    'mongo_db':      process.env.MONGODB or "mongodb://localhost:27017/meanstart"
+  # 'redis_host':    process.env.REDISHOST or '127.0.0.1'
+  # 'redis_port':    process.env.REDISPORT or 6379
+  # 'redis_auth':    process.env.REDISAUTH or false
+  # 'redis_opts':    {}
+    'views':         path.join(__dirname, "/../views")
+    'view engine':   'jade'
+    'title':         'MEAN Coffee Baseline'
     'mail_host':     process.env.MAIL_HOST || '127.0.0.1'    # These are mailcatacher defaults.
     'mail_port':     process.env.MAIL_PORT || 1025
     'mail_username': process.env.MAIL_USERNAME || 'user'
