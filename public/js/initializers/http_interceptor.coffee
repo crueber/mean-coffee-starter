@@ -14,7 +14,7 @@ new_interceptor = ($q, $rootScope) ->
       req--
       if req == 0 
         $rootScope.httpInProgress = false
-      $q.when(response)
+      return response || $q.when(response)
     'responseError': (response) -> 
       req--
       if req == 0 
