@@ -16,4 +16,5 @@ process.on 'SIGTERM', ->
   process.exit()
 
 process.on 'exit', ->
+  events.emit 'shutdown'
   logger.info 'Express is shut down.'

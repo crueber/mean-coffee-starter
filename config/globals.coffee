@@ -1,7 +1,8 @@
-path   = require "path"
-_      = require 'lodash'
-async  = require 'async'
-logger = require('./logger')()
+path    = require "path"
+_       = require 'lodash'
+async   = require 'async'
+logger  = require('./logger')()
+Emitter = require('events').EventEmitter
 
 ###
 # Application Globals Setup
@@ -11,6 +12,7 @@ module.exports = (app) ->
   global.app                 = app
   global.async               = async
   global.logger              = logger
+  global.events              = new Emitter()
   global.constant            = {}
   global.constant.one_ms     = 1
   global.constant.one_second = constant.one_ms * 1000

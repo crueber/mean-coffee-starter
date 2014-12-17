@@ -30,11 +30,18 @@ module.exports = (app) ->
   # *** Postgres Configuration ***
   # ******************************
 
-  # postgres_config = app.get('postgres_db')  
+  # postgres_config = app.get('postgres_db')
+  # pg_done = null
   # pg.connect postgres_config, (err, client, done) ->
-  #   client.query '', (err, result) ->
-  #     do_something() if result.rows and result.rows[0]
-  #     done()
+  #   app.set 'postgres_client', client
+  #   pg_done = done
+
+  events.on 'shutdown', ->
+    redis_client.quit()   unless typeof redis_client is 'undefined' or redis_client is null
+    pg_done()             unless typeof pg_done is 'undefined' or pg_done is null
+    mongoose.disconnect() unless typeof mongoose is 'undefined' or mongoose is null
+
+    logger.info 'All database connections closed.'
 
   true
 
