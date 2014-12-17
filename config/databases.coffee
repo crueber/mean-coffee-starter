@@ -41,7 +41,7 @@ module.exports = (app) ->
     pg_done()             unless typeof pg_done is 'undefined' or pg_done is null
     mongoose.disconnect() unless typeof mongoose is 'undefined' or mongoose is null
 
-    logger.info 'All database connections closed.'
+    logger.info 'Database connections closed.'
 
   true
 

@@ -5,16 +5,20 @@ process.on 'uncaughtException', (err) ->
   else
     logger.emerg 'UNCAUGHT EXCEPTION', err.stack 
 
-process.once 'SIGUSR2', ->
-  logger.warn 'Express received signal: SIGUSR2. Shutting down.'
-  process.kill process.pid, 'SIGUSR2'
-process.on 'SIGINT', ->
-  logger.warn 'Express received signal: SIGINT. Shutting down.'
-  process.exit()
-process.on 'SIGTERM', ->
-  logger.warn 'Express received signal: SIGTERM. Shutting down.'
-  process.exit()
 
-process.on 'exit', ->
-  events.emit 'shutdown'
-  logger.info 'Express is shut down.'
+events.on 'ready', ->
+  logger.info(app.get('title') + " server is listening on port %d in %s mode", app.get('port'), app.get('env'));
+
+  process.once 'SIGUSR2', ->
+    logger.warn 'Received SIGUSR2: Shutting down.'
+    events.emit 'shutdown'
+    process.kill process.pid, 'SIGUSR2'
+  process.on 'SIGINT', ->
+    logger.warn 'Received SIGINT: Shutting down.'
+    process.exit()
+  process.on 'SIGTERM', ->
+    logger.warn 'Received SIGTERM: Shutting down.'
+    process.exit()
+  process.on 'exit', ->
+    events.emit 'shutdown'
+    logger.info app.get('title') + ' is shut down.'

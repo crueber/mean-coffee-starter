@@ -10,9 +10,7 @@ require('./config/routes')(app);
 require('./config/caboose')(app);
 
 if(!module.parent) {
-  app.listen(app.get('port'), function() {
-    logger.info("✔ Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
-  });
+  app.listen(app.get('port'), function() { events.emit('ready'); });
 }
 
 require('./config/supervisor');
