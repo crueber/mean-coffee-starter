@@ -15,4 +15,6 @@ if(!module.parent) {
   });
 }
 
+require('./config/supervisor');
+
 module.exports = app;
