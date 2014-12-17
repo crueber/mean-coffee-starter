@@ -19,14 +19,14 @@ secrets          = require("./secrets")
 buildDir = if app.get('env') isnt 'production' then false else ".tmp"
 
 module.exports = (app) ->
+  app.use logger("dev")
+  app.use compress()
   app.use connectAssets(
     paths: [ "public/css", "public/js" ]
     helperContext: app.locals
     buildDir: buildDir
   )
-  app.use compress()
   app.use favicon(__dirname + '/../public/favicon.ico')
-  app.use logger("dev")
   if app.get('env') == 'production'
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
   else
