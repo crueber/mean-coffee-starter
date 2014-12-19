@@ -4,21 +4,21 @@ This injector allows you to always test if there is a request in
 progress via the rootScope.http_working variable.
 ###
 new_interceptor = ($q, $rootScope) ->
-  req = 0
-  {
+  $rootScope.requests_in_progress = 0
+  $rootScope.http_working = false
+
+  $rootScope.$watch 'requests_in_progress', (current_requests) ->
+    $rootScope.http_working = current_requests > 0
+
+  return {
     'request': (config) -> 
-      req++
-      $rootScope.httpInProgress = true
+      $rootScope.requests_in_progress++
       config || $q.when(config)
     'response': (response) -> 
-      req--
-      if req == 0 
-        $rootScope.httpInProgress = false
-      return response || $q.when(response)
+      $rootScope.requests_in_progress--
+      $q.when(response)
     'responseError': (response) -> 
-      req--
-      if req == 0 
-        $rootScope.httpInProgress = false
+      $rootScope.requests_in_progress--
       $q.reject(response)
   }
 new_interceptor.$inject = ['$q', '$rootScope']

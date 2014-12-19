@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title #{title}
+    title= title
     include partials/meta
     include partials/cdnfiles
     != css('styles')
@@ -11,6 +11,6 @@ html
       include partials/navigation
       .container-fluid
         include partials/flash
-        block content
+        ui-view
     include partials/footer
-    include partials/google-analytics
+  include partials/google-analytics
