@@ -1,6 +1,6 @@
 passport         = require("passport")
 GoogleStrategy   = require("passport-google-oauth").OAuth2Strategy
-secrets          = require("../secrets")
+oauth_keys       = require("../oauth_keys")
 
 ###
 OAuth Strategy Overview
@@ -17,7 +17,7 @@ OAuth Strategy Overview
 - Else create a new account.
 ###
 
-passport.use new GoogleStrategy(secrets.google, (req, accessToken, refreshToken, profile, done) ->
+passport.use new GoogleStrategy(oauth_keys.google, (req, accessToken, refreshToken, profile, done) ->
   if req.user
     User.findOne
       $or: [

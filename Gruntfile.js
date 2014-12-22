@@ -9,7 +9,12 @@ module.exports = function(grunt) {
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
-            PORT: '3200'
+            PORT: '3200',
+            SESSION_SECRET: 'meancoffee',
+            MAIL_HOST: '127.0.0.1',
+            MAIL_PORT: 1025,
+            MAIL_USERNAME: "user",
+            MAIL_PASSWORD: "pass"
           }
         }
       }

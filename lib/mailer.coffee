@@ -1,13 +1,12 @@
-secrets       = require '../config/secrets'
 nodemailer    = require 'nodemailer'
 smtpTransport = require 'nodemailer-smtp-transport'
 
 transport_options = 
-  port: secrets.email.port
-  host: secrets.email.host
+  port: app.get('mail_port')
+  host: app.get('mail_host')
   auth:
-    user: secrets.email.user
-    pass: secrets.email.password
+    user: app.get('mail_username')
+    pass: app.get('mail_password')
 
 mailTransporter = nodemailer.createTransport(smtpTransport(transport_options))
 

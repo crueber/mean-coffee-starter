@@ -1,4 +1,3 @@
-secrets       = require "../config/secrets"
 mailer        = require '../lib/mailer'
 
 ###

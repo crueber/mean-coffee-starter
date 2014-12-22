@@ -12,7 +12,6 @@ mongoose         = require("mongoose")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
-secrets          = require("./secrets")
 # MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
 
@@ -37,7 +36,7 @@ module.exports = (app) ->
   app.use methodOverride('X-HTTP-Method-Override')
   app.use cookieParser()
   app.use session(
-    secret: secrets.sessionSecret
+    secret: app.get('sessionSecret')
     # store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
     # store: new RedisStore(client: app.get('redis_client'))
     saveUninitialized: true
@@ -47,7 +46,6 @@ module.exports = (app) ->
   app.use passport.session()
   app.use (req, res, next) ->
     res.locals.user = req.user
-    res.locals.secrets = secrets
     next()
   app.use flash()
   app.use (req, res, next) ->

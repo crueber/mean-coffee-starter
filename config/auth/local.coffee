@@ -1,6 +1,5 @@
 passport         = require("passport")
 LocalStrategy    = require("passport-local").Strategy
-secrets          = require("../secrets")
 
 passport.use new LocalStrategy(
   usernameField: "email"

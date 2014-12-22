@@ -1,7 +1,6 @@
 async         = require("async")
 crypto        = require("crypto")
 passport      = require("passport")
-secrets       = require("../config/secrets")
 
 mailTransporter = require '../lib/mailer'
 

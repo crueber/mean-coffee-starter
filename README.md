@@ -65,7 +65,7 @@ Obtaining API Keys
  - **Application Type**: Web Application
  - **Authorized Javascript origins**: http://localhost:3000
  - **Authorized redirect URI**: http://localhost:3000/auth/google/callback
-- Copy and paste *Client ID* and *Client secret* keys into `config/secrets.js`
+- Copy and paste *Client ID* and *Client secret* keys into `config/oauth_keys.js`
 
 :exclamation: **Note:** When you ready to deploy to production don't forget to
 add your new url to *Authorized Javascript origins* and *Authorized redirect URI*,
@@ -86,7 +86,7 @@ The same goes for other providers.
  - `r_emailaddress`
  - `r_network`
 - Finish by clicking **Add Application** button
-- Copy and paste *API Key* and *Secret Key* keys into `config/secrets.js`
+- Copy and paste *API Key* and *Secret Key* keys into `config/oauth_keys.js`
  - *API Key* is your **clientID**
  - *Secret Key* is your **clientSecret**
 

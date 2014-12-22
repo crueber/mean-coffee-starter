@@ -1,6 +1,6 @@
 passport         = require("passport")
 LinkedInStrategy = require("passport-linkedin-oauth2").Strategy
-secrets          = require("../secrets")
+oauth_keys       = require("../oauth_keys")
 
 ###
 OAuth Strategy Overview
@@ -17,7 +17,7 @@ OAuth Strategy Overview
 - Else create a new account.
 ###
 
-passport.use new LinkedInStrategy(secrets.linkedin, (req, accessToken, refreshToken, profile, done) ->
+passport.use new LinkedInStrategy(oauth_keys.linkedin, (req, accessToken, refreshToken, profile, done) ->
   if req.user
     User.findOne linkedin: profile.id
     , (err, existingUser) ->

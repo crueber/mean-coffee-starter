@@ -35,10 +35,11 @@ module.exports = (app) ->
     'views':         path.join(__dirname, "/../views")
     'view engine':   'jade'
     'title':         'MEAN Coffee Baseline'
-    'mail_host':     process.env.MAIL_HOST || '127.0.0.1'    # These are mailcatacher defaults.
-    'mail_port':     process.env.MAIL_PORT || 1025
-    'mail_username': process.env.MAIL_USERNAME || 'user'
-    'mail_password': process.env.MAIL_PASSWORD || 'pass'
+    'sessionSecret': process.env.SESSION_SECRET or 'meancoffee'
+    'mail_host':     process.env.MAIL_HOST or '127.0.0.1'
+    'mail_port':     process.env.MAIL_PORT or 1025
+    'mail_username': process.env.MAIL_USERNAME or 'user'
+    'mail_password': process.env.MAIL_PASSWORD or 'pass'
 
   app.set key, value for key, value of application_globals
   app.locals.title = application_globals['title']
