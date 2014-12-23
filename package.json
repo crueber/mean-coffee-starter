@@ -42,6 +42,7 @@
     "passport-oauth": "^1.0.0",
     "request": "^2.40.0",
     "serve-favicon": "^2.1.7",
+    "ua-parser-js": "^0.7.3",
     "uglify-js": "^2.4.15",
     "validator": "^3.17.0",
     "winston": "^0.8.3"

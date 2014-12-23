@@ -1,39 +1,47 @@
 controllers  = require '../controllers'
 passportConf = require './passport'
 passport     = require 'passport'
+express      = require 'express'
+
+oauth_router = (app) ->
+  router = express.Router()
+  router.get "/google", passport.authenticate("google", scope: "profile email")
+  router.get "/google/callback", passport.authenticate("google", failureRedirect: "/login" ), (req, res) ->
+    res.redirect req.session.returnTo or "/"
+  router.get "/linkedin", passport.authenticate("linkedin", state: "SOME STATE" )
+  router.get "/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login"), (req, res) ->
+    res.redirect req.session.returnTo or "/"
+  router
+
+auth_router = (app) ->
+  router = express.Router()
+  router.get "/login", controllers.user.getLogin
+  router.post "/login", controllers.user.postLogin
+  router.get "/logout", controllers.user.logout
+  router.get "/forgot", controllers.user.getForgot
+  router.post "/forgot", controllers.user.postForgot
+  router.get "/reset/:token", controllers.user.getReset
+  router.post "/reset/:token", controllers.user.postReset
+  router.get "/signup", controllers.user.getSignup
+  router.post "/signup", controllers.user.postSignup
+  router.get "/account", passportConf.isAuthenticated, controllers.user.getAccount
+  router.post "/account/profile", passportConf.isAuthenticated, controllers.user.postUpdateProfile
+  router.get "/account/removePicture", passportConf.isAuthenticated, controllers.user.removePicture
+  router.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
+  router.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
+  # router.post('/account/delete', passportConf.isAuthenticated, controllers.user.postDeleteAccount);
+  # router.get "/contact", controllers.contact.getContact
+  # router.post "/contact", controllers.contact.postContact
+  router
+
+home_router = (app) ->
+  router = express.Router()
+  router.get "/", passportConf.isAuthenticated, controllers.home.index
+  router.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, controllers.api.getLinkedin
+  # router.get('/api/scraping', controllers.api.getScraping);
+  router
+
 
 module.exports = (app) ->
-
-  ###
-  # Application routes.
-  ###
-  app.get "/", passportConf.isAuthenticated, controllers.home.index
-  app.get "/login", controllers.user.getLogin
-  app.post "/login", controllers.user.postLogin
-  app.get "/logout", controllers.user.logout
-  app.get "/forgot", controllers.user.getForgot
-  app.post "/forgot", controllers.user.postForgot
-  app.get "/reset/:token", controllers.user.getReset
-  app.post "/reset/:token", controllers.user.postReset
-  app.get "/signup", controllers.user.getSignup
-  app.post "/signup", controllers.user.postSignup
-  # app.get "/contact", controllers.contact.getContact
-  # app.post "/contact", controllers.contact.postContact
-  app.get "/account", passportConf.isAuthenticated, controllers.user.getAccount
-  app.post "/account/profile", passportConf.isAuthenticated, controllers.user.postUpdateProfile
-  app.get "/account/removePicture", passportConf.isAuthenticated, controllers.user.removePicture
-  app.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
-  app.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
-  app.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, controllers.api.getLinkedin
-  # app.post('/account/delete', passportConf.isAuthenticated, controllers.user.postDeleteAccount);
-  # app.get('/api/scraping', controllers.api.getScraping);
-
-  ###
-  # OAuth routes for sign-in.
-  ###
-  app.get "/auth/google", passport.authenticate("google", scope: "profile email")
-  app.get "/auth/google/callback", passport.authenticate("google", failureRedirect: "/login" ), (req, res) ->
-    res.redirect req.session.returnTo or "/"
-  app.get "/auth/linkedin", passport.authenticate("linkedin", state: "SOME STATE" )
-  app.get "/auth/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login"), (req, res) ->
-    res.redirect req.session.returnTo or "/"
+  app.use '/', [ home_router(app), auth_router(app)]
+  app.use '/auth', [ oauth_router(app) ]

@@ -6,7 +6,7 @@ express          = require("express")
 expressValidator = require("express-validator")
 favicon          = require("serve-favicon")
 flash            = require("express-flash")
-logger           = require("morgan")
+morgan           = require("morgan")
 methodOverride   = require("method-override")
 mongoose         = require("mongoose")
 passport         = require("passport")
@@ -14,11 +14,12 @@ path             = require("path")
 session          = require("express-session")
 # MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
+userAgentCheck   = require("./middleware/user_agent_check")
 
 buildDir = if app.get('env') isnt 'production' then false else ".tmp"
 
 module.exports = (app) ->
-  app.use logger("dev")
+  app.use morgan("dev")
   app.use compress()
   app.use connectAssets(
     paths: [ "public/css", "public/js" ]
@@ -30,6 +31,7 @@ module.exports = (app) ->
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
   else
     app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
+  app.use userAgentCheck(logger)
   app.use bodyParser.json()
   app.use bodyParser.urlencoded(extended: true)
   app.use expressValidator()

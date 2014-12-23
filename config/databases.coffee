@@ -12,6 +12,16 @@ module.exports = (app) ->
   # opts = app.get 'redis_opts'
   # auth = app.get 'redis_auth'
   # redis_client = redis.createClient port, host, opts
+  # redis_client.select app.get 'redisdb' if app.get 'redisdb'
+  # redis_client.on 'connect', -> 
+  #   if app.get 'redisdb'
+  #     redis_client.send_anyways = true
+  #     redis_client.select app.get 'redisdb'
+  #     redis_client.send_anyways = false
+  #   logger.info 'Connection established to redis.'
+
+  # redis_client.on 'ready', -> logger.info 'Redis is ready.'
+  # redis_client.on 'end', -> logger.info 'Connection to redis has been closed.'
   # redis_client.auth auth if auth
   # app.set 'redis_client', redis_client
 
@@ -23,7 +33,7 @@ module.exports = (app) ->
   # env = app.get 'env'
   # mongoose.connect mongo_db
   # mongoose.connection.on 'error', ->
-  #   console.error '✗ MongoDB Connection Error.'
+  #   logger.error '✗ MongoDB Connection Error.'
   # mongoose.set 'debug', env is 'development'
 
   # ******************************
