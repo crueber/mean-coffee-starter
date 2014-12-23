@@ -6,7 +6,7 @@ express      = require 'express'
 oauth_router = (app) ->
   router = express.Router()
   router.get "/google", passport.authenticate("google", scope: "profile email")
-  router.get "/google/callback", passport.authenticate("google", failureRedirect: "/login" ), (req, res) ->
+  router.get "/google/callback", passport.authenticate("google", failureRedirect: "/login"), (req, res) ->
     res.redirect req.session.returnTo or "/"
   router.get "/linkedin", passport.authenticate("linkedin", state: "SOME STATE" )
   router.get "/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login"), (req, res) ->
