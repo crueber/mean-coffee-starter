@@ -1,6 +1,6 @@
 
 # redis    = require 'redis'
-# mongoose = require 'mongoose'
+mongoose = require 'mongoose'
 
 module.exports = (app) ->
   # ***************************
@@ -29,12 +29,12 @@ module.exports = (app) ->
   # *** MongoDB Configuration ***
   # *****************************
 
-  # mongo_db = app.get 'mongo_db'
-  # env = app.get 'env'
-  # mongoose.connect mongo_db
-  # mongoose.connection.on 'error', ->
-  #   logger.error '✗ MongoDB Connection Error.'
-  # mongoose.set 'debug', env is 'development'
+  mongo_db = app.get 'mongo_db'
+  env = app.get 'env'
+  mongoose.connect mongo_db
+  mongoose.connection.on 'error', ->
+    logger.error '✗ MongoDB Connection Error.'
+  mongoose.set 'debug', env is 'development'
 
   # ******************************
   # *** Postgres Configuration ***

@@ -12,7 +12,7 @@ mongoose         = require("mongoose")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
-# MongoStore       = require("connect-mongo")(session: session)
+MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
 userAgentCheck   = require("./middleware/user_agent_check")
 
@@ -39,7 +39,7 @@ module.exports = (app) ->
   app.use cookieParser()
   app.use session(
     secret: app.get('sessionSecret')
-    # store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
+    store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
     # store: new RedisStore(client: app.get('redis_client'))
     saveUninitialized: true
     resave: true
