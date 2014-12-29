@@ -1,11 +1,46 @@
 MEAN Coffee Starter
 ===================
 
-#### Updates
+Updates
+-------
 
-**December 29th, 2014** &mdash; There have been an awful lot of updates in the last month. All the updates are in support of becoming as modular as possible, all the while trying to keep the opinionation down to a dull roar.
+**December 29th, 2014** &mdash; There have been an awful lot of updates in the last month, if you've seen the starter before, make sure you look over the features and double check the structure before you assume anything is where it was! All the updates are in support of becoming as modular as possible, all the while trying to keep the opinionation down to a dull roar.
 
-#### Inspired by Hackathon Starter 2.0
+
+Features
+--------
+
+- File structure that will grow with any size project. MVC-styled.
+- CDNJS for all client side libraries possible, bower for everything else.
+- Node.js clusters support (PM2 Recommended instead, though)
+- **Passport Account Management**; Local, Google (OAuth), and LinkedIn integrated to start.
+- Asset Pipeline via connect-assets (handles all env-based compilation, minifiction, and cache busting)
+- Jade templates for building strong, semantic html pages, fast.
+- CoffeeScript for Javascript, The Right Way. Server and client.
+- LESS for modern, functional CSS. Compiled via connect-assets pipeline.
+- JSTs for the browser, also Jade. Compiled via pipeline, injected in to angular's templates on initialize.
+- Globals set for libraries that are used everywhere: _, async, app, loggger, events, and constants. Easily removable.
+- Client side swallow library for when console.log isn't available.
+- Bootstrap 3 + Flat UI + iOS7
+- Account profile with gravatar integration.
+- Google Analytics by default for pages and ng-ui-routes.
+- Last but not least: A supervisor module that watches the process object for signals and uncaught errors!
+
+Minimum Browsers Requirements based on libraries: IE9+, and latest for Chrome, Firefox, and Safari.
+
+
+What You Need
+-------------
+
+* NodeJS >0.10.x installed. I recommend a node version system such as NVM.
+* Bower and Grunt packages installed globally via NPM, and accessible via command line.
+* MongoDB >2.2 installed.
+* A strong knowledge of how to code in both the web browser and server spaces.
+  * This is not meant as a gentle introduction to web dev. You're going to be very confused if you don't strongly understand development on node and in modern web browsers, single page app style.
+
+
+Inspired by Hackathon Starter 2.0
+---------------------------------
 
 A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This boilerplate was forked and completely rewritten from Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter)! 
 
@@ -28,35 +63,7 @@ If you're curious about what's different from Sahat's starter kit and this one, 
 * CSRF removed. Unnecessary when dealing with SPA applications.
 * Added winston, and set logger to a global. One needs a logger in the rest of the app!
 
-What You Need
--------------
 
-* NodeJS >0.10.x installed. I recommend a node version system such as NVM.
-* Bower and Grunt packages installed globally via NPM, and accessible via command line.
-* MongoDB >2.2 installed.
-* A strong knowledge of how to code in both the web browser and server spaces.
-  * This is not meant as a gentle introduction to web dev. You're going to be very confused if you don't strongly understand development on node and in modern web browsers, single page app style.
-
-Features
---------
-
-- File structure that will grow with any size project. MVC-styled.
-- CDNJS for all client side libraries possible, bower for everything else.
-- Node.js clusters support (PM2 Recommended instead, though)
-- **Passport Account Management**; Local, Google (OAuth), and LinkedIn integrated to start.
-- Asset Pipeline via connect-assets (handles all env-based compilation, minifiction, and cache busting)
-- Jade templates for building strong, semantic html pages, fast.
-- CoffeeScript for Javascript, The Right Way. Server and client.
-- LESS for modern, functional CSS. Compiled via connect-assets pipeline.
-- JSTs for the browser, also Jade. Compiled via pipeline, injected in to angular's templates on initialize.
-- Globals set for libraries that are used everywhere: _, async, app, loggger, events, and constants. Easily removable.
-- Client side swallow library for when console.log isn't available.
-- Bootstrap 3 + Flat UI + iOS7
-- Account profile with gravatar integration.
-- Google Analytics by default for pages and ng-ui-routes.
-- Last but not least: A supervisor module that watches the process object for signals and uncaught errors!
-
-Minimum Browsers Requirements based on libraries: IE9+, and latest for Chrome, Firefox, and Safari.
 
 Obtaining API Keys
 ------------------
@@ -142,15 +149,29 @@ List of Packages
 | [Nodemon](https://github.com/remy/nodemon) | Run node while watching for changes. |
 | Winston                         | The logger for the rest of the app. |
 
-Useful Tools and Resources
+
+Recommended Libraries and Tools
+-------------------------------
+
+* Server (or both)
+  - [Node Inspector](https://github.com/node-inspector/node-inspector) - Node.js debugger based on Chrome Developer Tools.
+  - [Filesize.js](http://filesizejs.com/) - Pretty file sizes, e.g. `filesize(265318); // "265.32 kB"`.
+  - [Numeral.js](http://numeraljs.com) - Library for formatting and manipulating numbers.
+  - [Moment.js](http://momentjs.com/) - Date parsing library.
+  - [Node-UUID](https://github.com/broofa/node-uuid) - RFC 4122 UUID Generator
+* Client
+  - [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/icons/)
+  - [selectize.js](http://brianreavis.github.io/selectize.js/) - Similar to Chosen, Select 2, et al. Textbox/Select hybrid.
+
+Useful Resources
 --------------------------
 
-- [JS Recipes](http://jsrecipes.org) - JavaScript tutorials for backend and frontend development.
+- [CoffeeScript](http://coffeescript.org/) - Main coffeescript site.
 - [Jade Syntax Documentation by Example](http://naltatis.github.io/jade-syntax-docs/#attributes) - Even better than official Jade docs.
-- [HTML to Jade converter](http://html2jade.aaron-powell.com) - Extremely valuable when you need to quickly copy and paste HTML snippets from the web.
-- [JavascriptOO](http://www.javascriptoo.com/) - A directory of JavaScript libraries with examples, CDN links, statistics, and videos.
 - [JS to CoffeeScript converter](http://js2coffee.org/) - When moving over to CoffeeScript, this can be very useful.
-- [Node Inspector](https://github.com/node-inspector/node-inspector) - Node.js debugger based on Chrome Developer Tools.
+- [HTML to Jade converter](http://html2jade.org/) - When sniping html snippets, this can be a time saver.
+- [JavascriptOO](http://www.javascriptoo.com/) - A directory of JavaScript libraries with examples, CDN links, statistics, and videos.
+- [JS Recipes](http://jsrecipes.org) - JavaScript tutorials for backend and frontend development.
 
 Recommended Design Resources
 ----------------------------
@@ -158,25 +179,10 @@ Recommended Design Resources
 - [Bootsnipp](http://bootsnipp.com/) - Code snippets for Bootstrap.
 - [UIBox](http://www.uibox.in) - Curated HTML, CSS, JS, UI components.
 - [Bootstrap Zero](http://bootstrapzero.com/) - Free Bootstrap templates themes.
-- [Google Bootstrap](http://todc.github.io/todc-bootstrap/) - Google-styled theme for Bootstrap.
-- [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/icons/) - It's already part of the Hackathon Starter, so use this page as a reference.
 - [Colors](http://clrs.cc) - A nicer color palette for the web.
 - [Creative Button Styles](http://tympanus.net/Development/CreativeButtons/) - awesome button styles.
 - [Creative Link Effects](http://tympanus.net/Development/CreativeLinkEffects/) - Beautiful link effects in CSS.
 - [Medium Scroll Effect](http://codepen.io/andreasstorm/pen/pyjEh) - Fade in/out header background image as you scroll.
-
-Useful Server-side Libraries
-----------------------------
-
-- [Filesize.js](http://filesizejs.com/) - Pretty file sizes, e.g. `filesize(265318); // "265.32 kB"`.
-- [Numeral.js](http://numeraljs.com) - Library for formatting and manipulating numbers.
-- Moment.js - Date parsing library.
-- Node-UUID - RFC 4122 UUID Generator
-
-Useful Client-side Libraries
-----------------------------
-
-- [selectize.js](http://brianreavis.github.io/selectize.js/) - Similar to Chosen, Select 2, et al. Textbox/Select hybrid.
 
 
 NodeJS Pro Tips
@@ -234,6 +240,9 @@ I agree with Sahat Yalkabov's contribution guide. This is an extremely opinionat
 Changelog
 ---------
 
+### 2.0 (December 29, 2014)
+- There have been so many updates, that I feel it warrants a major version change.
+
 ### 1.2 (August 28th, 2014)
 - Client libraries updated to latest stable of their current major release (or minor, in the case of angular)
 
@@ -257,4 +266,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Original codebase was licensed by Sahat Yalkabov in 2014 under the MIT License. No substantial portion of that code remains, but credit where it is due!
+**Inspiration for this codebase was strongly pulled from the Hackathon Starter 2 written by Sahat Yalkabov in 2014 under the MIT License. Without that repo, this wouldn't exist. Thus, credit where it is due!**
