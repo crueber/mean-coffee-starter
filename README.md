@@ -1,6 +1,10 @@
 MEAN Coffee Starter
 ===================
 
+#### Updates
+
+**December 29th, 2014** &mdash; There have been an awful lot of updates in the last month. All the updates are in support of becoming as modular as possible, all the while trying to keep the opinionation down to a dull roar.
+
 #### Inspired by Hackathon Starter 2.0
 
 A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This boilerplate was forked and completely rewritten from Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter)! 
@@ -31,27 +35,28 @@ What You Need
 * Bower and Grunt packages installed globally via NPM, and accessible via command line.
 * MongoDB >2.2 installed.
 * A strong knowledge of how to code in both the web browser and server spaces.
-  * If you don't have this, you are going to be very confused by this setup.
+  * This is not meant as a gentle introduction to web dev. You're going to be very confused if you don't strongly understand development on node and in modern web browsers, single page app style.
 
 Features
 --------
 
-- **Local Authentication** using Email and Password
-- **OAuth 2.0 Authentication** via Google, LinkedIn
-- Flash notifications with animations by [animate.css](http://daneden.github.io/animate.css/)
-- Improved MVC Project Infrastructure
+- File structure that will grow with any size project. MVC-styled.
+- CDNJS for all client side libraries possible, bower for everything else.
 - Node.js clusters support (PM2 Recommended instead, though)
-- Rails 3.1-style asset pipeline by connect-assets (See FAQ)
-- LESS stylesheets (auto-compiled without any Gulp/Grunt hassle)
+- **Passport Account Management**; Local, Google (OAuth), and LinkedIn integrated to start.
+- Asset Pipeline via connect-assets (handles all env-based compilation, minifiction, and cache busting)
+- Jade templates for building strong, semantic html pages, fast.
+- CoffeeScript for Javascript, The Right Way. Server and client.
+- LESS for modern, functional CSS. Compiled via connect-assets pipeline.
+- JSTs for the browser, also Jade. Compiled via pipeline, injected in to angular's templates on initialize.
+- Globals set for libraries that are used everywhere: _, async, app, loggger, events, and constants. Easily removable.
+- Client side swallow library for when console.log isn't available.
 - Bootstrap 3 + Flat UI + iOS7
-- **Account Management**
- - Gravatar
- - Profile Details
- - Change Password
- - Forgot Password
- - Reset Password
- - Link multiple OAuth strategies to one account
- - Delete Account
+- Account profile with gravatar integration.
+- Google Analytics by default for pages and ng-ui-routes.
+- Last but not least: A supervisor module that watches the process object for signals and uncaught errors!
+
+Minimum Browsers Requirements based on libraries: IE9+, and latest for Chrome, Firefox, and Safari.
 
 Obtaining API Keys
 ------------------
