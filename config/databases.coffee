@@ -1,6 +1,8 @@
 
 # redis    = require 'redis'
+# pg       = require 'pg'
 mongoose = require 'mongoose'
+
 
 module.exports = (app) ->
   # ***************************

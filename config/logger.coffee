@@ -26,4 +26,6 @@ module.exports = ->
       client.emerg error.message or "error", error.stack or error
       setTimeout process.exit, 2000, 1
 
+  console.log = client.info
+
   client
