@@ -42,26 +42,28 @@ What You Need
 Inspired by Hackathon Starter 2.0
 ---------------------------------
 
-A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This boilerplate was forked and completely rewritten from Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter)! 
+A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This boilerplate was originally forked, and then completely rewritten, based on Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter)! 
 
-I'm going to spare you all the reasons why this was built, because you should go check out Sahat's intro if you're really interested in that; It is an extremely thorough introduction. Suffice it to say, this rewrite focuses on a different avenue: Single Page Applications written with Angular. It wouldn't be very hard to convert it over to Ember or Backbone or whatever you prefer, should you want to go a different route than Angular.
+I'm going to spare you all the reasons why a Hackathon starter might be useful, because you should checkout @sahat's intro on that if you're really interested. This rewrite of that hackathon focuses in a different direction: Single Page Applications written with Angular. It wouldn't be very hard to convert it over to Ember or Backbone or whatever you prefer, but you'll have to do all the framework setup yourself.
 
-Boilerplate Guiding Principles:
+Starter Guiding Principles:
 
-* Node **Best Practices**
+* Node and JavaScript **Best Practices**
+* Web **Best Practices**
 * **Speed of Development**
-* **Simple**, but **Complete**
+* **Elogance** and **Simplicity**, while being **Complete**
 
-If you're curious about what's different from Sahat's starter kit and this one, here are the primary bits:
+If you're curious about what's different from Sahat's starter kit and this one, here are some of the starting points:
 
 * CoffeeScript everywhere. Much cleaner syntax.
-* Major structural changes that incorporate best practices for large/complex ExpressJS applications.
-* Only two OAuth agents are available: LinkedIn and Google. Local is available.
-* No third party services: Facebook, Github, Twitter, Venmo, Stripe, FourSquare, Tumblr, Steam.
-* Extra modules: CoffeeScript, Nodemon, Bower, and Grunt
-* No generator to change OAuth- No reason to second guess the intentions of the developer.
-* CSRF removed. Unnecessary when dealing with SPA applications.
-* Added winston, and set logger to a global. One needs a logger in the rest of the app!
+* Major structural changes that incorporate best practices for large/complex express applications.
+* Only two OAuth agents are available: LinkedIn and Google. Local is available. 
+* No third party services, no API call tests.
+* Bower. Grunt. Nodemon. Lots of modules that are needed to support modern SPA style web apps.
+* No generators. Developers should understand how to deal with changes. This isn't for beginners.
+* CSRF removed. Unnecessary when dealing with SPA applications. Will revisit security in the future.
+* Global logger added. Other globals added. CDN use integrated. Analytics for SPA. Supervisor for process module.
+* And more. Lots more.
 
 
 
