@@ -6,7 +6,7 @@ process.on 'uncaughtException', (err) ->
     logger.emerg 'UNCAUGHT EXCEPTION', err.stack 
 
 
-events.on 'ready', ->
+events.on 'listening', ->
   logger.info app.get('title') + " server is listening on port %d in %s mode", app.get('port'), app.get('env')
 
   process.once 'SIGUSR2', ->

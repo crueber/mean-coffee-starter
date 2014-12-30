@@ -11,7 +11,7 @@ require('./config/caboose')(app);
 require('./config/supervisor');
 
 if(!module.parent) {
-  app.listen(app.get('port'), function() { events.emit('ready'); });
+  app.listen(app.get('port'), function() { events.emit('listening'); });
 }
 
 require('./lib/cron');
