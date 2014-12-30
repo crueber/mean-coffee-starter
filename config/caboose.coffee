@@ -1,3 +1,4 @@
+
 server_error_handler = require('errorhandler')()
 
 module.exports = (app) ->

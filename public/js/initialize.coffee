@@ -3,7 +3,6 @@
 
 # Root Module for the project.
 window.rootModule = angular.module 'root', [
-  # 'ngRoute'
   'ui.router'
   'ngSanitize'
   'ngAnimate'

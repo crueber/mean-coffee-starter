@@ -7,7 +7,7 @@ process.on 'uncaughtException', (err) ->
 
 
 events.on 'ready', ->
-  logger.info(app.get('title') + " server is listening on port %d in %s mode", app.get('port'), app.get('env'));
+  logger.info app.get('title') + " server is listening on port %d in %s mode", app.get('port'), app.get('env')
 
   process.once 'SIGUSR2', ->
     logger.warn 'Received SIGUSR2: Shutting down.'

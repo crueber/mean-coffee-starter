@@ -8,7 +8,7 @@ transport_options =
     user: app.get('mail_username')
     pass: app.get('mail_password')
 
-mailTransporter = nodemailer.createTransport(smtpTransport(transport_options))
+mailTransporter = nodemailer.createTransport smtpTransport transport_options
 
 module.exports = mailTransporter
 

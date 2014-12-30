@@ -16,9 +16,9 @@ MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
 userAgentCheck   = require("./middleware/user_agent_check")
 
-buildDir = if app.get('env') isnt 'production' then false else ".tmp"
-
 module.exports = (app) ->
+  buildDir = if app.get('env') isnt 'production' then false else ".tmp"
+
   app.use morgan("dev")
   app.use compress()
   app.use connectAssets(

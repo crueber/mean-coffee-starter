@@ -1,6 +1,7 @@
 winston = require("winston")
 
 module.exports = ->
+  log_level = process.env.LOG_LEVEL || 'debug'
   log_levels =
     levels:
       debug: 0
@@ -15,7 +16,7 @@ module.exports = ->
       error: "red"
       emerg: "red"
 
-  console_transport = new (winston.transports.Console)(level: "debug", colorize: true, timestamp: true)
+  console_transport = new (winston.transports.Console)(level: log_level, colorize: true, timestamp: true)
   client = new (winston.Logger)(levels: log_levels.levels, transports: [console_transport])
   winston.addColors log_levels.colors
 
