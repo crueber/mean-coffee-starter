@@ -6,20 +6,21 @@ express          = require("express")
 expressValidator = require("express-validator")
 favicon          = require("serve-favicon")
 flash            = require("express-flash")
-morgan           = require("morgan")
 methodOverride   = require("method-override")
-mongoose         = require("mongoose")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
 MongoStore       = require("connect-mongo")(session: session)
 # RedisStore       = require('connect-redis')(session);
 userAgentCheck   = require("./middleware/user_agent_check")
+requestLogger    = require("./middleware/request_logger")
+healthCheck      = require("./middleware/health_check")
 
 module.exports = (app) ->
   buildDir = if app.get('env') isnt 'production' then false else ".tmp"
 
-  app.use morgan("dev")
+  app.use healthCheck
+  app.use requestLogger(logger)
   app.use compress()
   app.use connectAssets(
     paths: [ "public/css", "public/js" ]

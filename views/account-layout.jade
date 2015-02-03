@@ -5,10 +5,7 @@ html
     include partials/meta
     include partials/cdnfiles
     != css('styles')
-    != js('application')
-    script.
-      window.user = !{JSON.stringify(user)}
-  body(ng-app='root', ng-cloak)
+  body
     #wrap
       ui-view
       block content

@@ -1,8 +1,8 @@
 passport         = require("passport")
 
-require('./auth/local')
-require('./auth/google')
-require('./auth/linkedin')
+require('./local')
+require('./google')
+require('./linkedin')
 
 passport.serializeUser (user, done) ->
   done null, user.id

@@ -1,10 +1,6 @@
 
-server_error_handler = require('errorhandler')()
+controllers  = require '../controllers'
 
 module.exports = (app) ->
 
-  app.use (req, res) ->
-    res.status 404
-    res.render '404'
-
-  app.use server_error_handler
+  app.use controllers.home.index

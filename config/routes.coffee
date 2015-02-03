@@ -1,5 +1,5 @@
 controllers  = require '../controllers'
-passportConf = require './passport'
+passportConf = require './auth'
 passport     = require 'passport'
 express      = require 'express'
 
