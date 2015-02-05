@@ -1,6 +1,17 @@
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
 
 var app = require('./app');
 
-app.listen(app.get('port'), function() { events.emit('ready'); });
+var https_options = {
+  key: fs.readFileSync('shared/config/ssl.key'),
+  cert: fs.readFileSync('shared/config/ssl.crt'),
+  ca: fs.readFileSync('shared/config/ssl.ca')
+}
+
+http.createServer(app).listen(80);
+https.createServer(https_options, app).listen(443);
+events.emit('ready');
 
 module.exports = app;
