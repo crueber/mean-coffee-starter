@@ -30,18 +30,14 @@ auth_router = (app) ->
   router.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
   router.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
   # router.post('/account/delete', passportConf.isAuthenticated, controllers.user.postDeleteAccount);
-  # router.get "/contact", controllers.contact.getContact
-  # router.post "/contact", controllers.contact.postContact
   router
 
-home_router = (app) ->
+page_router = (app) ->
   router = express.Router()
   router.get "/", passportConf.isAuthenticated, controllers.home.index
-  router.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, controllers.api.getLinkedin
-  # router.get('/api/scraping', controllers.api.getScraping);
   router
 
-
 module.exports = (app) ->
-  app.use '/', [ home_router(app), auth_router(app)]
+  app.use '/api', [ require('../apis')(app) ]
+  app.use '/', [ page_router(app), auth_router(app) ]
   app.use '/auth', [ oauth_router(app) ]

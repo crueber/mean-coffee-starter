@@ -34,7 +34,7 @@ Web scraping example using Cheerio library.
 GET /api/linkedin
 LinkedIn API example.
 ###
-exports.getLinkedin = (req, res, next) ->
+exports.getInfo = (req, res, next) ->
   token = _.find req.user.tokens, kind: "linkedin"
   linkedin = Linkedin.init(token.accessToken)
   linkedin.people.me (err, $in) ->

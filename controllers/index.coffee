@@ -1,7 +1,7 @@
 path = require 'path'
 fs   = require 'fs'
 
-excludes = [ 'index' ]
+excludes = [ 'index', '.DS_Store' ]
 controllers = {}
 
 ###
