@@ -5,11 +5,11 @@ module.exports = function(grunt) {
       dev: {
         script: 'app.js',
         options: {
-          nodeArgs: ['--debug=5959'],
+          // nodeArgs: ['--debug=5959'],
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
-            PORT: 3200,
+            PORT: 3000,
             SESSION_SECRET: 'meancoffee',
             MONGODB: "mongodb://localhost:27017/meanstart",
             REDISHOST: '127.0.0.1',
