@@ -260,6 +260,9 @@ I agree with Sahat Yalkabov's contribution guide. This is an extremely opinionat
 Changelog
 ---------
 
+### 2.1 (February 5, 2015)
+- HTML5 mode by default, supported by express routes. OpsWork base setup. Automatic bower install.
+
 ### 2.0 (December 29, 2014)
 - There have been so many updates, that I feel it warrants a major version change.
 
