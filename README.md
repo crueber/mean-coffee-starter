@@ -60,28 +60,28 @@ What You Need
 Inspired by Hackathon Starter 2.0
 ---------------------------------
 
-A boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. This boilerplate was originally forked, and then completely rewritten, based on Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter)! 
+This is a boilerplate for Mongo, ExpressJS, Angular, and NodeJS using CoffeeScript. The inspiration and initial code utilized to build pieces of this boilerplate came from Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter). Since its inception it has been completely rewritten. No major pieces remain from that initial code base at this point. Despite that, full credit where it is due for the inspiration.
 
-I'm going to spare you all the reasons why a Hackathon starter might be useful, because you should checkout @sahat's intro on that if you're really interested. This rewrite of that hackathon focuses in a different direction: Single Page Applications written with Angular. It wouldn't be very hard to convert it over to Ember or Backbone or whatever you prefer, but you'll have to do all the framework setup yourself.
+If you want to know why a starter is useful, go check out @sahat's intro on his Hackathon. No need for me to regurgitated it here. Unlike the Hackathon Starter 2.0, this boilerplate focuses on building a framework for Single Page Applications written with Angular. It wouldn't be very hard to convert it over to Ember or Backbone or whatever you prefer, but you'll have to do all the framework setup yourself.
 
-Starter Guiding Principles:
+Guiding Principles:
 
-* Node and JavaScript **Best Practices**
-* Web **Best Practices**
-* **Speed of Development**
-* **Elogance** and **Simplicity**, while being **Complete**
+* JavaScript, Node and Web **Best Practices**.
+* **Speed of Development**.
+* **Elogance**: **Simplicity** while remaining **Complete**.
+
+Remember: At the end of the day, this is just a bunch of framework code on top of express.
 
 If you're curious about what's different from Sahat's starter kit and this one, here are some of the starting points:
 
-* CoffeeScript everywhere. Much cleaner syntax.
 * Major structural changes that incorporate best practices for large/complex express applications.
-* Only two OAuth agents are available: LinkedIn and Google. Local is available. 
-* No third party services, no API call tests.
-* Bower. Grunt. Nodemon. Lots of modules that are needed to support modern SPA style web apps.
-* No generators. Developers should understand how to deal with changes. This isn't for beginners.
-* CSRF removed. Unnecessary when dealing with SPA applications. Will revisit security in the future.
-* Global logger added. Other globals added. CDN use integrated. Analytics for SPA. Supervisor for process module.
-* And more. Lots more.
+* CoffeeScript for clean syntax and speed of development. 
+* No deluge of oauth agents. Just LinkedIn and Google. Local by default.
+* No third party services, no API call tests. 
+* Bower for client side libraries. Grunt, because one command isn't enough in a terminal. Nodemon to reload your server on changes. Tools that support building modern web apps.
+* No generators. Developers should understand the framework, and know how to make changes. This isn't for beginners.
+* CSRF removed. Less necessary when dealing with SPA applications, though will revisit security in the future.
+* Miscellany: Global logger added. Other globals added. CDN use integrated. Analytics for SPA. Supervisor for process module.... And more. Lots more.
 
 
 
