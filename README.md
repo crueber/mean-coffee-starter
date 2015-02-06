@@ -29,11 +29,10 @@ Features
 - Node.js clusters support (PM2 Recommended instead, though)
 - **Passport Account Management**; Local, Google (OAuth), and LinkedIn integrated to start.
 - Asset Pipeline via connect-assets (handles all env-based compilation, minifiction, and cache busting)
-- Jade templates for building strong, semantic html pages, fast.
+- Jade templates on server and client. Browser preloads JSTs in to angular cache via via asset pipeline. Easy, fast, semantic.
 - CoffeeScript for Javascript, The Right Way. Server and client.
 - LESS for modern, functional CSS. Compiled via connect-assets pipeline.
-- A sane logger that actually appends the level and datetime for the request and for subsequent calls.
-- JSTs for the browser, also Jade. Compiled via pipeline, injected in to angular's templates on initialize.
+- A sane logger that actually appends the level and datetime for all usage.
 - Non-dogmatic use of globals:
   - Many will argue that globals are evil. That doesn't make sense. Use sparingly, but where it makes sense.
   - Models are all loaded globally (based on the filename and the object exported).
