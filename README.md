@@ -1,16 +1,30 @@
 MEAN Coffee Starter
 ===================
 
-Updates
--------
+Latest Update Comments
+----------------------
 
-**December 29th, 2014** &mdash; There have been an awful lot of updates in the last month, if you've seen the starter before, make sure you look over the features and double check the structure before you assume anything is where it was! All the updates are in support of becoming as modular as possible, all the while trying to keep the opinionation down to a dull roar.
+&mdash; **February 5th, 2015** &mdash; 
+
+There have been a lot of fairly major refactors to the entire template in the last three months, incorporating more best practices and and experience gained from apps utilizing node in production. Some highlights include:
+
+  * HTML5 mode by default in Angular. Supported by automatic direction in to the base route if no route is found in the node router.
+  * Incorporation of a server.js file for AWS OpsWorks base setup.
+  * Do bower install by default when an npm install is run.
+  * A cron is included by default. See lib/cron.coffee.
+  * Gathering like systems in to a single file (logging, database connections, etc).
+
+There are more updates than this, but I would highly recommend you just start looking through the template to get started. You'll need to know where everything lives anyways!
+
+Happy node-ing!
+
+&mdash; Chris &mdash;
 
 
 Features
 --------
 
-- File structure that will grow with any size project. MVC-styled.
+- File structure that will grow with any size project. MVC-oriented, but not enforced. Models global.
 - CDNJS for all client side libraries possible, bower for everything else.
 - Node.js clusters support (PM2 Recommended instead, though)
 - **Passport Account Management**; Local, Google (OAuth), and LinkedIn integrated to start.
@@ -18,10 +32,15 @@ Features
 - Jade templates for building strong, semantic html pages, fast.
 - CoffeeScript for Javascript, The Right Way. Server and client.
 - LESS for modern, functional CSS. Compiled via connect-assets pipeline.
+- A sane logger that actually appends the level and datetime for the request and for subsequent calls.
 - JSTs for the browser, also Jade. Compiled via pipeline, injected in to angular's templates on initialize.
-- Globals set for libraries that are used everywhere: _, async, app, loggger, events, and constants. Easily removable.
+- Non-dogmatic use of globals:
+  - Many will argue that globals are evil. That doesn't make sense. Use sparingly, but where it makes sense.
+  - Models are all loaded globally (based on the filename and the object exported).
+  - Very common modules are loaded globally, since they are often used in many places: _, async, app, logger, events, and constants. 
+  - If you feel very strongly about not utilizing globals, you can easily enough remove the global declarations and add the appropriate require statements all over the place. I wouldn't recommend it.
 - Client side swallow library for when console.log isn't available.
-- Bootstrap 3 + Flat UI + iOS7
+- Bootstrap 3 via LESS.
 - Account profile with gravatar integration.
 - Google Analytics by default for pages and ng-ui-routes.
 - Last but not least: A supervisor module that watches the process object for signals and uncaught errors!

@@ -5,9 +5,8 @@ var https = require('https');
 var app = require('./app');
 
 var https_options = {
-  key: fs.readFileSync('shared/config/ssl.key'),
-  cert: fs.readFileSync('shared/config/ssl.crt'),
-  ca: fs.readFileSync('shared/config/ssl.ca')
+  key: fs.readFileSync('../../shared/config/ssl.key'),
+  cert: fs.readFileSync('../../shared/config/ssl.crt')
 }
 
 http.createServer(app).listen(80);
