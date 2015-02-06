@@ -18,6 +18,9 @@ userSchema = new mongoose.Schema(
   google: String
   linkedin: String
   tokens: Array
+
+  activated: { type: Boolean, default: true }
+  activation_token: String
 )
 
 userSchema.plugin(plugin.createdOn, { index: true });

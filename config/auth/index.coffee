@@ -14,7 +14,7 @@ passport.deserializeUser (id, done) ->
 module.exports =
   # Login Required middleware.
   isAuthenticated: (req, res, next) ->
-    return next()  if req.isAuthenticated()
+    return next()  if req.isAuthenticated() and req.user.activated
     res.redirect "/login"
 
   # Authorization Required middleware.
