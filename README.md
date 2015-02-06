@@ -125,51 +125,6 @@ The same goes for other providers.
 <hr>
 
 
-List of Packages
-----------------
-
-| Package                         | Description   |
-| ------------------------------- |:-------------:|
-| async                           | Utility library that provides asynchronous control flow. |
-| bcrypt-nodejs                   | Library for hashing and salting user passwords. |
-| cheerio                         | Scrape web pages using jQuery-style syntax.  |
-| connect-assets                  | Compiles LESS stylesheets, concatenates & minifies JavaScript. |
-| connect-mongo                   | MongoDB session store for Express. |
-| csso                            | Dependency for connect-assets library to minify CSS. |
-| express                         | Node.js web framework. |
-| body-parser                     | Express 4.0 middleware. |
-| cookie-parser                   | Express 4.0 middleware. |
-| serve-favicon                   | Express 4.0 middleware. |
-| express-session                 | Express 4.0 middleware. |
-| compression                     | Express 4.0 middleware. |
-| errorhandler                    | Express 4.0 middleware. |
-| method-override                 | Express 4.0 middleware. |
-| express-flash                   | Provides flash messages for Express. |
-| express-validator               | Easy form validation for Express. |
-| jade                            | Template engine for Express. |
-| less                            | LESS compiler. Used implicitly by connect-assets. |
-| mongoose                        | MongoDB ODM. |
-| node-linkedin                   | LinkedIn API library. |
-| nodemailer                      | Node.js library for sending emails. |
-| passport                        | Simple and elegant authentication library for node.js |
-| passport-google-oauth           | Sign-in with Google plugin. |
-| passport-local                  | Sign-in with Username and Password plugin. |
-| passport-linkedin-oauth2        | Sign-in with LinkedIn plugin. |
-| passport-oauth                  | Allows you to set up your own OAuth 1.0a and OAuth 2.0 strategies. |
-| request                         | Simplified HTTP request library. |
-| underscore                      | Handy JavaScript utlities library. |
-| uglify-js                       | Dependency for connect-assets library to minify JS. |
-| validator                       | Used in conjunction with express-validator in **controllers/api.js**. |
-| mocha                           | Test framework. |
-| chai                            | BDD/TDD assetion library. |
-| supertest                       | HTTP assertions library. |
-| mstring                         | Multi-line strings for generator. |
-| inquirer                        | Interactive command line interface for generator. |
-| colors                          | Pretty output colors for generator. |
-| [Nodemon](https://github.com/remy/nodemon) | Run node while watching for changes. |
-| Winston                         | The logger for the rest of the app. |
-
-
 Recommended Libraries and Tools
 -------------------------------
 
