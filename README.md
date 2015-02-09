@@ -50,7 +50,7 @@ Minimum Browsers Requirements based on libraries: IE9+, and latest for Chrome, F
 What You Need
 -------------
 
-* NodeJS >0.10.x installed. I recommend a node version system such as NVM.
+* NodeJS >0.10.x installed. Recently tested on 0.12, and works fine. Either way, you should be using a versioning system such as NVM or N.
 * Bower and Grunt packages installed globally via NPM, and accessible via command line.
 * MongoDB >2.2 installed.
 * A strong knowledge of how to code in both the web browser and server spaces.
