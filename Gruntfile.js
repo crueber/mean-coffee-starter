@@ -9,7 +9,7 @@ module.exports = function(grunt) {
           watch: ['lib', 'controllers', 'config', 'models'],
           ext: 'js,coffee',
           env: { 
-            PORT: 3000,
+            PORT: 3300,
             SESSION_SECRET: 'meancoffee',
             MONGODB: "mongodb://localhost:27017/meanstart",
             REDISHOST: '127.0.0.1',

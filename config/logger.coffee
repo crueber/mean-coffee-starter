@@ -10,7 +10,7 @@ module.exports = ->
       error: 3
       emerg: 4
     colors:
-      debug: "grey"
+      debug: "cyan"
       info: "green"
       warn: "yellow"
       error: "red"
