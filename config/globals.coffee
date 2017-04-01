@@ -38,12 +38,12 @@ module.exports = (app) ->
     'mail_port':     process.env.MAIL_PORT
     'mail_username': process.env.MAIL_USERNAME
     'mail_password': process.env.MAIL_PASSWORD
-    'mongo_db':      process.env.MONGODB
-  # 'redis_host':    process.env.REDISHOST 
-  # 'redis_port':    process.env.REDISPORT 
-  # 'redis_auth':    process.env.REDISAUTH
-  # 'redis_opts':    {}
-  # 'postgres_db':   process.env.POSTGRESDB
+    'mongo_db':      process.env.MONGODB or 'mongodb://192.168.99.100:27017/mean-coffee-starter'
+    'redis_host':    process.env.REDISHOST  or '192.168.99.100'
+    'redis_port':    process.env.REDISPORT or 6379
+    # 'redis_auth':    process.env.REDISAUTH
+    # 'redis_opts':    {}
+    # 'postgres_db':   process.env.POSTGRESDB
 
   app.set key, value for key, value of application_globals
   app.locals.title = application_globals['title']

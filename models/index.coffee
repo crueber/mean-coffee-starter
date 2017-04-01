@@ -1,6 +1,8 @@
 path = require 'path'
 fs   = require 'fs'
 
+logger.debug 'Loading models...'
+
 excludes = [ 'index', 'plugins' ]
 module.exports = models = {}
 
