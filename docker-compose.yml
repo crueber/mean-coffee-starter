@@ -5,11 +5,16 @@ services:
     ports:
       - 1337:1337
     environment:
+      PORT: 1337
       SESSION_SECRET: THISISMEANCOFFEESTARTER
       MONGODB: mongodb://mongo:27017/mcs
       REDISHOST: redis
       REDISPORT: 6379
   redis:
     image: 'redis:3.2'
+    ports:
+      - 6379:6379
   mongo:
     image: 'mongo:3.4'
+    ports:
+      - 27017:27017
