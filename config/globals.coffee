@@ -8,7 +8,6 @@ Emitter = require('events').EventEmitter
 module.exports = (app) ->
   global.app                 = app
   global._                   = require 'lodash'
-  global.async               = require 'async'
   global.moment              = require 'moment'
   global.logger              = require('./logger')()
   global.events              = new Emitter()

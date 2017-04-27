@@ -1,7 +1,6 @@
 oauth_keys  = require("../config/oauth_keys")
 querystring = require("querystring")
 validator   = require("validator")
-async       = require("async")
 cheerio     = require("cheerio")
 request     = require("request")
 Linkedin    = require("node-linkedin")(oauth_keys.linkedin.clientID, oauth_keys.linkedin.clientSecret, oauth_keys.linkedin.callbackURL)

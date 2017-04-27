@@ -36,7 +36,7 @@ Features
 - Non-dogmatic use of globals:
   - Many will argue that globals are evil. That doesn't make sense. Use sparingly, but where it makes sense.
   - Models are all loaded globally (based on the filename and the object exported).
-  - Very common modules are loaded globally, since they are often used in many places: _, async, app, logger, events, and constants. 
+  - Very common modules are loaded globally, since they are often used in many places: _, app, logger, events, and constants. 
   - If you feel very strongly about not utilizing globals, you can easily enough remove the global declarations and add the appropriate require statements all over the place. I wouldn't recommend it.
 - Client side swallow library for when console.log isn't available.
 - Bootstrap 3 via LESS.
@@ -164,7 +164,6 @@ NodeJS Pro Tips
 --------
 
 - When installing an NPM package, add a *--save* flag, and it will be automatially added to `package.json` as well. For example, `npm install --save moment`.
-- Use [async.parallel()](https://github.com/caolan/async#parallel) when you need to run multiple asynchronous tasks, and then render a page, but only when all tasks are completed. For example, you might want to scrape 3 different websites for some data and render the results in a template after all 3 websites have been scraped.
 - Need to find a specific object inside an Array? Use [_.findWhere](http://underscorejs.org/#findWhere) function from Underscore.js. For example, this is how you would retrieve a Twitter token from database: `var token = _.findWhere(req.user.tokens, { kind: 'twitter' });`, where 1st parameter is an array, and a 2nd parameter is an object to search for.
 
 
