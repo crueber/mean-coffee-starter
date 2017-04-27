@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node:6.10
 
 RUN npm cache clean
 RUN npm i -g node-gyp
