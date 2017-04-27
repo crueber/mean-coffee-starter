@@ -1,6 +1,5 @@
 oauth_keys  = require("../config/oauth_keys")
 validator   = require("validator")
-request     = require("request")
 
 ###
 GET /api
