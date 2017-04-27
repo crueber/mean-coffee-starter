@@ -1,5 +1,4 @@
 oauth_keys  = require("../config/oauth_keys")
-querystring = require("querystring")
 validator   = require("validator")
 request     = require("request")
 
