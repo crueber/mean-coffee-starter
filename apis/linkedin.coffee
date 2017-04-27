@@ -3,7 +3,6 @@ querystring = require("querystring")
 validator   = require("validator")
 cheerio     = require("cheerio")
 request     = require("request")
-Linkedin    = require("node-linkedin")(oauth_keys.linkedin.clientID, oauth_keys.linkedin.clientSecret, oauth_keys.linkedin.callbackURL)
 
 ###
 GET /api
@@ -33,9 +32,9 @@ Web scraping example using Cheerio library.
 GET /api/linkedin
 LinkedIn API example.
 ###
-exports.getInfo = (req, res, next) ->
-  token = _.find req.user.tokens, kind: "linkedin"
-  linkedin = Linkedin.init(token.accessToken)
-  linkedin.people.me (err, $in) ->
-    return next(err)  if err
-    res.render "api/linkedin", title: "LinkedIn API", profile: $in
+# exports.getInfo = (req, res, next) ->
+#   token = _.find req.user.tokens, kind: "linkedin"
+#   linkedin = Linkedin.init(token.accessToken)
+#   linkedin.people.me (err, $in) ->
+#     return next(err)  if err
+#     res.render "api/linkedin", title: "LinkedIn API", profile: $in
