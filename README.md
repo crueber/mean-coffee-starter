@@ -134,6 +134,8 @@ Recommended Libraries and Tools
   - [Numeral.js](http://numeraljs.com) - Library for formatting and manipulating numbers.
   - [Moment.js](http://momentjs.com/) - Date parsing library.
   - [Node-UUID](https://github.com/broofa/node-uuid) - RFC 4122 UUID Generator
+  - [Cheerio](https://github.com/cheeriojs/cheerio) - For scraping sites.
+  - [got](https://www.npmjs.com/package/got) - Making HTTP requests.
 * Client
   - [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/icons/)
   - [selectize.js](http://brianreavis.github.io/selectize.js/) - Similar to Chosen, Select 2, et al. Textbox/Select hybrid.
