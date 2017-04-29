@@ -10,10 +10,10 @@ module.exports = (app) ->
     pg.connect app.get('postgres_db'), (err, client, done) ->
       app.set 'postgres_client', client
 
-      events.emit 'postgres_connected', client
-      events.on 'shutdown', ->
+      vent.emit events.POSTGRES_CONNECTED, client
+      vent.on events.APP_SHUTDOWN, ->
         done()
         logger.info 'Postgres connection disconnected gracefully.'
-        events.emit 'postgres_shutdown'
+        vent.emit events.POSTGRES_DISCONNECTED
 
       res()

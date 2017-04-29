@@ -5,13 +5,13 @@ process.on 'uncaughtException', (err) ->
   else
     logger.emerg 'UNCAUGHT EXCEPTION', err.stack 
 
-events.on 'server-listening', ->
+vent.on events.SERVER_LISTENING, ->
   logger.info "#{app.get('title')} server is listening on port #{app.get('port')} in #{app.get('env')} mode."
 
-events.on 'startup-complete', ->
+vent.on events.STARTUP_COMPLETE, ->
   process.once 'SIGUSR2', ->
     logger.warn 'Received SIGUSR2: Shutting down.'
-    events.emit 'shutdown'
+    vent.emit events.APP_SHUTDOWN
     process.kill process.pid, 'SIGUSR2'
   process.on 'SIGINT', ->
     logger.warn 'Received SIGINT: Shutting down.'
@@ -20,5 +20,5 @@ events.on 'startup-complete', ->
     logger.warn 'Received SIGTERM: Shutting down.'
     process.exit()
   process.on 'exit', ->
-    events.emit 'shutdown'
+    vent.emit events.APP_SHUTDOWN
     logger.info app.get('title') + ' is shut down.'

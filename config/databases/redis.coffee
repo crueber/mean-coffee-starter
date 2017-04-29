@@ -22,13 +22,13 @@ module.exports = (app) ->
       app.set 'redis_client', redis_client
       logger.info 'Connection established to redis.'
 
-      events.emit 'redis_connected'
+      vent.emit events.REDIS_CONNECTED
       res()
 
     redis_client.on 'ready', -> logger.info 'Redis is ready.'
     redis_client.on 'end',   -> logger.info 'Connection to redis has been closed.'
 
-    events.on 'shutdown', ->
+    vent.on events.APP_SHUTDOWN, ->
       redis_client.quit()
       logger.info 'Redis connection gracefully disconnected.'
-      events.emit 'redis_shutdown'
+      vent.emit events.REDIS_DISCONNECTED

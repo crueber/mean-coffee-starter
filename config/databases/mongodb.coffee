@@ -14,10 +14,10 @@ module.exports = (app) ->
     mongoose.connection.on 'connected',     -> 
       logger.info 'MongoDB Connection Established'
       require '../../models'
-      events.emit 'mongo_connected'
+      vent.emit events.MONGO_CONNECTED
       res()
 
-    events.on 'shutdown', ->
+    vent.on events.APP_SHUTDOWN, ->
       mongoose.disconnect()
       logger.info 'Mongo disconnected gracefully.'
-      events.emit 'mongo_shutdown'
+      vent.emit events.MONGO_DISCONNECTED

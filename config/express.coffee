@@ -17,7 +17,7 @@ requestLogger    = require("./middleware/request_logger")
 healthCheck      = require("./middleware/health_check")
 
 module.exports = (app) ->
-  events.on 'startup-middleware', ->
+  vent.on events.STARTUP_MIDDLEWARE, ->
     buildDir = if app.get('env') isnt 'production' then false else ".tmp"
 
     app.use healthCheck
@@ -59,4 +59,4 @@ module.exports = (app) ->
       req.session.returnTo = req.path
       next()
 
-    events.emit 'middleware-started'
+    vent.emit events.STARTUP_MIDDLEWARE_COMPLETE

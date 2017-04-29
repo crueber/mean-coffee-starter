@@ -1,5 +1,6 @@
 
-global.events = Emitter = require('events').EventEmitter()
+global.vent = Emitter = require('events').EventEmitter()
+global.events = require('./events')()
 global.app = require('express')()
 
 require('./config/globals')(app)
@@ -11,14 +12,14 @@ require('./config/supervisor')(app)
 require('./lib/cron')(app)
 
 module.exports = base = (start) ->
-  events.emit 'startup'
-  events.on 'databases-started', -> events.emit 'startup-middleware'
-  events.on 'middleware-started', -> events.emit 'startup-routes'
-  events.on 'routes-started', -> events.emit 'startup-complete'
+  vent.emit events.STARTUP_PREPARE, app
+  vent.on events.STARTUP_DATABASE_COMPLETE, -> vent.emit events.STARTUP_MIDDLEWARE, app
+  vent.on events.STARTUP_MIDDLEWARE_COMPLETE, -> vent.emit events.STARTUP_ROUTES, app
+  vent.on events.STARTUP_ROUTES_COMPLETE, -> vent.emit events.STARTUP_COMPLETE, app
 
   if start
-    events.on 'startup-complete', ->
+    vent.on events.STARTUP_COMPLETE, (app) ->
     	app.listen app.get('port'), -> 
-        events.emit 'server-listening'
+        vent.emit events.SERVER_LISTENING
 
 base(true) unless module.parent

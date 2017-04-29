@@ -44,4 +44,4 @@ set_globals = (app) ->
 
 
 module.exports = (app) ->
-  events.on 'startup', -> set_globals(app)
+  vent.on events.STARTUP_PREPARE, -> set_globals(app)

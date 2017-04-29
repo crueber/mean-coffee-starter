@@ -1,7 +1,7 @@
 
 module.exports = (app) ->
 
-  events.on 'startup', (app) ->
+  vent.on events.STARTUP_PREPARE, (app) ->
     databases = [
       require('./mongodb')(app)
       require('./redis')(app)
@@ -9,5 +9,5 @@ module.exports = (app) ->
     ]
     
     Promise.all(databases).then -> 
-      events.emit 'databases-started'
+      vent.emit events.STARTUP_DATABASE_COMPLETE
 
