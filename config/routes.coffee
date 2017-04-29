@@ -39,6 +39,8 @@ page_router = (app) ->
   router
 
 module.exports = (app) ->
-  app.use '/api', [ api_router(app) ]
-  app.use '/', [ page_router(app), auth_router(app) ]
-  app.use '/auth', [ oauth_router(app) ]
+  events.on 'startup-routes', ->
+    app.use '/api', [ api_router(app) ]
+    app.use '/', [ page_router(app), auth_router(app) ]
+    app.use '/auth', [ oauth_router(app) ]
+    events.emit 'routes-started'

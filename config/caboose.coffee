@@ -2,5 +2,5 @@
 controllers  = require '../controllers'
 
 module.exports = (app) ->
-
-  app.use controllers.home.index
+  events.on 'startup-complete', ->
+    app.use controllers.home.index

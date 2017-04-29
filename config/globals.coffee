@@ -1,16 +1,10 @@
 
 path    = require "path"
-Emitter = require('events').EventEmitter
 
-###
-# Application Globals Setup
-###
-module.exports = (app) ->
-  global.app                 = app
+set_globals = (app) ->
   global._                   = require 'lodash'
   global.moment              = require 'moment'
   global.logger              = require('./logger')()
-  global.events              = new Emitter()
   global.empty_fn            = -> null
   global.constant            = {}
   global.constant.one_ms     = 1
@@ -29,7 +23,7 @@ module.exports = (app) ->
   application_globals =
     'dev':           app.get('env') isnt 'production'
     'views':         path.join(__dirname, "/../views")
-    'view engine':   'jade'
+    'view engine':   'pug'
     'title':         'MEAN Coffee Baseline'
     'port':          process.env.PORT
     'sessionSecret': process.env.SESSION_SECRET
@@ -47,3 +41,7 @@ module.exports = (app) ->
   app.set key, value for key, value of application_globals
   app.locals.title = application_globals['title']
   app.locals.dev   = application_globals['dev']
+
+
+module.exports = (app) ->
+  events.on 'startup', -> set_globals(app)

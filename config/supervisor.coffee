@@ -5,10 +5,10 @@ process.on 'uncaughtException', (err) ->
   else
     logger.emerg 'UNCAUGHT EXCEPTION', err.stack 
 
+events.on 'server-listening', ->
+  logger.info "#{app.get('title')} server is listening on port #{app.get('port')} in #{app.get('env')} mode."
 
-events.on 'ready', ->
-  logger.info app.get('title') + " server is listening on port %d in %s mode", app.get('port'), app.get('env')
-
+events.on 'startup-complete', ->
   process.once 'SIGUSR2', ->
     logger.warn 'Received SIGUSR2: Shutting down.'
     events.emit 'shutdown'
