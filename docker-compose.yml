@@ -2,6 +2,9 @@ version: '2'
 services:
   web:
     build: .
+    volumes:
+      - .:/usr/src/app
+    command: "sh -c 'yarn && npm start'"
     ports:
       - 1337:1337
     environment:

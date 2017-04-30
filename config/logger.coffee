@@ -1,5 +1,6 @@
 winston = require 'winston'
 colors = require 'colors'
+moment = require 'moment'
 
 log_level = process.env.LOG_LEVEL || 'debug'
 log_levels =

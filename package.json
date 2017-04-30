@@ -11,8 +11,7 @@
   "scripts": {
     "dev": "nodejs-dashboard -- node -r nodejs-dashboard app.js",
     "start": "node app.js",
-    "test": "mocha",
-    "install": "./node_modules/.bin/bower install"
+    "test": "mocha"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

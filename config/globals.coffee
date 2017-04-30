@@ -4,7 +4,6 @@ path    = require "path"
 set_globals = (app) ->
   global._                   = require 'lodash'
   global.moment              = require 'moment'
-  global.logger              = require('./logger')()
   global.empty_fn            = -> null
   global.constant            = {}
   global.constant.one_ms     = 1
