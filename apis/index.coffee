@@ -19,6 +19,6 @@ for file in files
 module.exports = (app) ->
   router = express.Router()
 
-  router.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, apis.linkedin.getInfo
+  # router.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, apis.linkedin.getInfo
   
   router

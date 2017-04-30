@@ -10,4 +10,7 @@ module.exports = (app) ->
     
     Promise.all(databases).then -> 
       vent.emit events.STARTUP_DATABASE_COMPLETE
+    .catch (e) ->
+      console.error e
+      vent.emit events.SHUTDOWN
 

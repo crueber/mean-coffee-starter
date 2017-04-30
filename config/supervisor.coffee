@@ -1,12 +1,19 @@
 
 process.on 'uncaughtException', (err) ->
   if err.code is 'ECONNRESET'
-    logger.error 'Requestor terminated the connection before a resopnse could be sent.'
+    logger.error 'Requestor terminated the connection before a response could be sent.'
   else
     logger.emerg 'UNCAUGHT EXCEPTION', err.stack 
 
 vent.on events.SERVER_LISTENING, ->
   logger.info "#{app.get('title')} server is listening on port #{app.get('port')} in #{app.get('env')} mode."
+
+vent.on events.SHUTDOWN, ->
+  logger.warn 'Shutdown request received.'
+  vent.emit events.APP_SHUTDOWN
+  setTimeout -> 
+    process.exit()
+  , 1000
 
 vent.on events.STARTUP_COMPLETE, ->
   process.once 'SIGUSR2', ->

@@ -16,5 +16,6 @@ module.exports = ->
   REDIS_DISCONNECTED: 'db-redis-disconnected'
 
   SERVER_LISTENING: 'server-listening'
+  SHUTDOWN: 'shutdown-requested'
   APP_SHUTDOWN: 'shutdown-prepare'
 

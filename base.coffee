@@ -6,10 +6,11 @@ global.events = require('./events')()
 global.app = require('express')()
 
 console.log JSON.stringify dir_loader './config', args: [app]
+require('./config/databases')(app)
 console.log JSON.stringify dir_loader './lib', args: [app]
 
 # require('./config/globals')(app)
-# require('./config/databases')(app)
+
 # require('./config/express')(app)
 # require('./config/routes')(app)
 # require('./config/caboose')(app)
@@ -17,11 +18,8 @@ console.log JSON.stringify dir_loader './lib', args: [app]
 # require('./lib/cron')(app)
 
 module.exports = base = (start) ->
-  console.log 'thing'
   vent.emit events.STARTUP_PREPARE, app
-  vent.on events.STARTUP_DATABASE_COMPLETE, -> 
-    console.log 'thing2'
-    vent.emit events.STARTUP_MIDDLEWARE, app
+  vent.on events.STARTUP_DATABASE_COMPLETE, -> vent.emit events.STARTUP_MIDDLEWARE, app
   vent.on events.STARTUP_MIDDLEWARE_COMPLETE, -> vent.emit events.STARTUP_ROUTES, app
   vent.on events.STARTUP_ROUTES_COMPLETE, -> vent.emit events.STARTUP_COMPLETE, app
 
