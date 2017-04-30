@@ -1,39 +1,39 @@
 bodyParser       = require("body-parser")
 cookieParser     = require("cookie-parser")
 compress         = require("compression")
-connectAssets    = require("connect-assets")
+# connectAssets    = require("connect-assets")
 express          = require("express")
 expressValidator = require("express-validator")
-favicon          = require("serve-favicon")
+# favicon          = require("serve-favicon")
 flash            = require("express-flash")
 methodOverride   = require("method-override")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
-MongoStore       = require("connect-mongo")(session)
-# RedisStore       = require('connect-redis')(session);
-userAgentCheck   = require("./middleware/user_agent_check")
-requestLogger    = require("./middleware/request_logger")
-healthCheck      = require("./middleware/health_check")
+# MongoStore       = require("connect-mongo")(session)
+RedisStore       = require('connect-redis')(session);
+middleware       = dir_loader './middleware', curried: false, prefix: 'middleware'
 
 module.exports = (app) ->
   vent.on events.STARTUP_MIDDLEWARE, ->
     buildDir = if app.get('env') isnt 'production' then false else ".tmp"
+    # sessionStore = new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
+    sessionStore = new RedisStore(client: app.get('redis_client'))
 
-    app.use healthCheck
-    app.use requestLogger(logger)
+    app.use middleware.health_check
+    app.use middleware.request_logger(logger)
     app.use compress()
-    app.use connectAssets(
-      paths: [ "public/css", "public/js" ]
-      helperContext: app.locals
-      buildDir: buildDir
-    )
-    app.use favicon(__dirname + '/../public/favicon.ico')
-    if app.get('env') == 'production'
-      app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
-    else
-      app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
-    app.use userAgentCheck(logger)
+    # app.use connectAssets(
+    #   paths: [ "public/css", "public/js" ]
+    #   helperContext: app.locals
+    #   buildDir: buildDir
+    # )
+    # app.use favicon(__dirname + '/../public/favicon.ico')
+    # if app.get('env') == 'production'
+    #   app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_week)
+    # else
+    #   app.use express.static(path.join(__dirname, "/../public"), maxAge: constant.one_second)
+    app.use middleware.user_agent_check(logger)
     app.use bodyParser.json()
     app.use bodyParser.urlencoded(extended: true)
     app.use expressValidator()
@@ -41,8 +41,7 @@ module.exports = (app) ->
     app.use cookieParser()
     app.use session(
       secret: app.get('sessionSecret')
-      store: new MongoStore(url: app.get('mongo_db'), auto_reconnect: true)
-      # store: new RedisStore(client: app.get('redis_client'))
+      store: sessionStore
       saveUninitialized: true
       resave: true
     )

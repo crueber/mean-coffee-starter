@@ -1,13 +1,13 @@
 #flash
-  if messages.errors
+  if errors
     .alert.alert-danger.animated.fadeIn
-      for error in messages.errors
+      for error in errors
         div= error.msg
-  if messages.info
+  if info
     .alert.alert-info.animated.fadeIn
-      for info in messages.info
+      for info in info
         div= info.msg
-  if messages.success
+  if success
     .alert.alert-success.animated.fadeIn
-      for success in messages.success
+      for success in success
         div= success.msg

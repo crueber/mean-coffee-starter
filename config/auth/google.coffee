@@ -26,10 +26,7 @@ passport.use new GoogleStrategy(oauth_keys.google, (req, accessToken, refreshTok
       ]
     , (err, existingUser) ->
       if existingUser
-        req.flash "errors",
-          msg: "There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account."
-
-        done err
+        done new Error "There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account."
       else
         User.findById req.user.id, (err, user) ->
           user.google = profile.id
@@ -40,11 +37,7 @@ passport.use new GoogleStrategy(oauth_keys.google, (req, accessToken, refreshTok
           user.profile.name = user.profile.name or profile.displayName
           user.profile.gender = user.profile.gender or profile._json.gender
           user.profile.picture = user.profile.picture or profile._json.picture
-          user.save (err) ->
-            req.flash "info",
-              msg: "Google account has been linked."
-
-            done err, user
+          user.save (err) -> done err, user
   else
     User.findOne
       google: profile.id
@@ -54,10 +47,7 @@ passport.use new GoogleStrategy(oauth_keys.google, (req, accessToken, refreshTok
         email: profile._json.email
       , (err, existingEmailUser) ->
         if existingEmailUser
-          req.flash "errors",
-            msg: "There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings."
-
-          done err
+          done new Error "There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings."
         else
           user = new User()
           user.email = profile._json.email

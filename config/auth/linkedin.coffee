@@ -22,10 +22,7 @@ passport.use new LinkedInStrategy(oauth_keys.linkedin, (req, accessToken, refres
     User.findOne linkedin: profile.id
     , (err, existingUser) ->
       if existingUser
-        req.flash "errors",
-          msg: "There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account."
-
-        done err
+        done new Error "There is already a LinkedIn account that belongs to you. Sign in with that account or delete it, then link it with your current account."
       else
         User.findById req.user.id, (err, user) ->
           user.linkedin = profile.id
@@ -37,11 +34,7 @@ passport.use new LinkedInStrategy(oauth_keys.linkedin, (req, accessToken, refres
           user.profile.location = user.profile.location or profile._json.location.name
           user.profile.picture = user.profile.picture or profile._json.pictureUrl
           user.profile.website = user.profile.website or profile._json.publicProfileUrl
-          user.save (err) ->
-            req.flash "info",
-              msg: "LinkedIn account has been linked."
-
-            done err, user
+          user.save (err) -> done err, user
   else
     User.findOne
       linkedin: profile.id
@@ -51,10 +44,7 @@ passport.use new LinkedInStrategy(oauth_keys.linkedin, (req, accessToken, refres
         email: profile._json.emailAddress
       , (err, existingEmailUser) ->
         if existingEmailUser
-          req.flash "errors",
-            msg: "There is already an account using this email address. Sign in to that account and link it with LinkedIn manually from Account Settings."
-
-          done err
+          done new Error "There is already an account using this email address. Sign in to that account and link it with LinkedIn manually from Account Settings."
         else
           user = new User()
           user.linkedin = profile.id
