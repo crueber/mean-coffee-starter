@@ -4,7 +4,7 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
-    command: "sh -c 'yarn && npm start'"
+    command: "sh -c 'yarn && npm run dev'"
     ports:
       - 1337:1337
     environment:

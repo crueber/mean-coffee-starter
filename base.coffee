@@ -5,9 +5,9 @@ global.vent = new (require('events'))()
 global.events = require('./events')()
 global.app = require('express')()
 
-console.log JSON.stringify dir_loader './config', args: [app]
+console.log JSON.stringify dir_loader './config', args: [app], prefix: 'config'
 require('./config/databases')(app)
-console.log JSON.stringify dir_loader './lib', args: [app]
+console.log JSON.stringify dir_loader './lib', args: [app], prefix: 'lib'
 
 # require('./config/globals')(app)
 

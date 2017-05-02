@@ -5,14 +5,14 @@ compress         = require("compression")
 express          = require("express")
 expressValidator = require("express-validator")
 # favicon          = require("serve-favicon")
-flash            = require("express-flash")
+# flash            = require("express-flash")
 methodOverride   = require("method-override")
 passport         = require("passport")
 path             = require("path")
 session          = require("express-session")
 # MongoStore       = require("connect-mongo")(session)
 RedisStore       = require('connect-redis')(session);
-middleware       = dir_loader './middleware', curried: false, prefix: 'middleware'
+middleware       = dir_loader __dirname+'/middleware', curried: false, prefix: 'middleware'
 
 module.exports = (app) ->
   vent.on events.STARTUP_MIDDLEWARE, ->
@@ -50,7 +50,7 @@ module.exports = (app) ->
     app.use (req, res, next) ->
       res.locals.user = req.user
       next()
-    app.use flash()
+    # app.use flash()
     app.use (req, res, next) ->
       return next()  if req.method isnt "GET"
       path = req.path.split("/")[1]
