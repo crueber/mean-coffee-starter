@@ -1,5 +1,30 @@
-MEAN Coffee Starter
-===================
+# Depracation notice / Construction
+
+&mdash; **May 2nd, 2017** &mdash;
+
+This starter was last updated in 2015, around node v0.12 era. That means that it assumes a much older version of node than currently is supported. I have chosen to start working on a feature branch which will eventually be forked off in to its own repository of a new starter. Here are some highlights of that new starter:
+
+* Docker will be supported by default, with docker compose. Including mongo and redis to start with.
+* Server and client layers will be completely separated, at the root level, where a server and client dir will exist.
+
+Server:
+* Mongo continues to be the general purpose DB, and Redis for sessions and jobs.
+* There will be an application level event emitter global called 'vent'.
+* JWT will be the primary authentication mechanism on the server.
+* Routing will be reworked to default to REST with promises.
+* CoffeeScript will still be preferred here.
+
+Client:
+* Browserify will be the packager. (Webpack maybe, but I still prefer Browserify)
+* VueJS will replace Angular. VueX, and vue-router will be setup as base.
+* ES6 will be used in the client.
+* A basic framework for authorization, so routes for: login, register, forgot password, password reset, and account edit.
+
+Some day I would like to offer Couch and Rethink and alternatives, but that'll be after the fork from this repo. When that fork occurs, I will leave a link here. Thanks!
+
+&mdash; Chris &mdash;
+
+# MEAN Coffee Starter
 
 Latest Update Comments
 ----------------------
