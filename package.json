@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dashboard": "nodejs-dashboard -- node -r nodejs-dashboard app.js",
-    "dev": "nodemon app.js",
+    "dev": "nodemon -e js,coffee app.js",
     "start": "node app.js",
     "test": "mocha"
   },
