@@ -2,7 +2,7 @@
 # SPA+N Starter
 ##### (Single Page App with Node)
 
-This repo represents all the boilerplate code required for setting up a node server app along with a single page web app client, using docker. This starter is useful for anyone that is trying to just get a quick jumping off point for developing an application, rather than trying to drag all the bits and pieces together. Even if you want just part of the things in this repo, it's really easy to cut out the pieces that you don't need.
+This repo represents all the boilerplate code required for setting up a node app server using express, mongo, redis, along with a single page web app client using vue, all wrapped in docker. This starter is useful for anyone that is trying to just get a quick jumping off point for developing an application, rather than trying to drag all the bits and pieces together. Even if you want just part of the things in this repo, it's really easy to cut out the pieces that you don't need.
 
 ### Technologies you'll find here
 
