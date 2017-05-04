@@ -11,57 +11,6 @@ mailTransporter = require '../lib/mailer'
 #     render_data.msg = "Unable to remove picture." if err
 #     res.render 'account/profile', render_data      
 
-exports.postUpdatePassword = (req, res, next) ->
-  req.assert("password", "Password must be at least 4 characters long").len 4
-  req.assert("confirmPassword", "Passwords do not match").equals req.body.password
-  errors = req.validationErrors()
-  if errors
-    # req.flash "errors", errors
-    return res.redirect("/account")
-  User.findById req.user.id, (err, user) ->
-    return next(err)  if err
-    user.password = req.body.password
-    user.save (err) ->
-      return next(err)  if err
-      # req.flash "success",
-      #   msg: "Password has been changed."
-
-      res.redirect "/account"
-
-###
-POST /account/delete
-Delete user account.
-@param id - User ObjectId
-###
-# exports.postDeleteAccount = (req, res, next) ->
-#   User.remove
-#     _id: req.user.id
-#   , (err) ->
-#     return next(err)  if err
-#     req.logout()
-#     res.redirect "/"
-
-###
-GET /account/unlink/:provider
-Unlink OAuth2 provider from the current user.
-@param provider
-@param id - User ObjectId
-###
-exports.getOauthUnlink = (req, res, next) ->
-  provider = req.params.provider
-  User.findById req.user.id, (err, user) ->
-    return next(err)  if err
-    user[provider] = `undefined`
-    user.tokens = _.reject(user.tokens, (token) ->
-      token.kind is provider
-    )
-    user.save (err) ->
-      return next(err)  if err
-      # req.flash "info",
-      #   msg: provider + " account has been unlinked."
-
-      res.redirect "/account"
-
 exports.postReset = (req, res, next) ->
   req.assert("password", "Password must be at least 4 characters long.").len 4
   req.assert("confirm", "Passwords must match.").equals req.body.password

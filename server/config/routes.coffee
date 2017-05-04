@@ -16,22 +16,16 @@ auth_router = (app) ->
   router.get "/auth/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login"), (req, res) ->
     res.redirect req.session.returnTo or "/"
 
-  router.post "/login", controllers.user.postLogin
-  router.post "/signup", controllers.user.postSignup
+  # router.post "/login", controllers.user.postLogin
+  # router.post "/signup", controllers.user.postSignup
   router.post "/forgot", controllers.user.postForgot
   router.post "/reset/:token", controllers.user.postReset
   # router.post('/account/delete', passportConf.isAuthenticated, controllers.user.postDeleteAccount);
 
-  router.get "/login", controllers.user.getLogin # To be removed.
-  router.get "/forgot", controllers.user.getForgot # To be removed.
-  router.get "/reset/:token", controllers.user.getReset # To be removed.
-  router.get "/signup", controllers.user.getSignup # To be removed.
-
-  router.get "/account", passportConf.isAuthenticated, controllers.user.getAccount
-  router.post "/account/profile", passportConf.isAuthenticated, controllers.user.postUpdateProfile
-  router.get "/account/removePicture", passportConf.isAuthenticated, controllers.user.removePicture
-  router.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
-  router.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
+  # router.post "/account/profile", passportConf.isAuthenticated, controllers.user.postUpdateProfile
+  # router.get "/account/removePicture", passportConf.isAuthenticated, controllers.user.removePicture
+  # router.post "/account/password", passportConf.isAuthenticated, controllers.user.postUpdatePassword
+  # router.get "/account/unlink/:provider", passportConf.isAuthenticated, controllers.user.getOauthUnlink
 
   router
 
