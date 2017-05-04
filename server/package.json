@@ -32,6 +32,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.15.2",
     "express-validator": "^3.1.2",
+    "jsonwebtoken": "^7.4.0",
     "less": "^1.7.5",
     "lodash": "^2.4.1",
     "method-override": "^2.1.3",
