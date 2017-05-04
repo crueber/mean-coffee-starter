@@ -1,10 +1,12 @@
 
+bluebird = require 'bluebird'
 mongoose = require 'mongoose'
 
 module.exports = (app) ->
   new Promise (res, rej) ->
     rej new Error "Mongo connection string not found." unless app.get 'mongo_db'
 
+    mongoose.Promise = bluebird
     mongoose.set 'debug', app.get('env') is 'development'
     mongoose.connect app.get 'mongo_db'
     mongoose.connection.on 'error',         -> logger.error 'MongoDB Connection Error'

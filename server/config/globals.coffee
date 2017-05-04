@@ -1,8 +1,9 @@
 
-path    = require "path"
+path    = require 'path'
 
 set_globals = (app) ->
   global._                   = require 'lodash'
+  global.Promise             = require 'bluebird'
   global.moment              = require 'moment'
   global.empty_fn            = -> null
   global.constant            = {}

@@ -3,112 +3,14 @@ passport      = require("passport")
 
 mailTransporter = require '../lib/mailer'
 
-###
-GET /login
-Login page.
-###
-exports.getLogin = (req, res) ->
-  return res.redirect("/")  if req.user
-  res.render "account/login",
-    title: "Login"
 
-###
-POST /login
-Sign in using email and password.
-@param email
-@param password
-###
-exports.postLogin = (req, res, next) ->
-  req.assert("email", "Email is not valid").isEmail()
-  req.assert("password", "Password cannot be blank").notEmpty()
-  if errors = req.validationErrors()
-    return res.render 'account/login', errors: errors
+# exports.removePicture = (req, res) ->
+#   req.user.profile.picture = ""
+#   req.user.save (err) ->
+#     render_data = title: "Account Management"
+#     render_data.msg = "Unable to remove picture." if err
+#     res.render 'account/profile', render_data      
 
-  passport.authenticate("local", (err, user, info) ->
-    return next(err)  if err
-    unless user
-      return res.render 'account/login', msg: info.message
-    req.logIn user, (err) ->
-      return next(err)  if err
-
-      res.redirect req.session.returnTo or "/"
-  ) req, res, next
-
-###
-GET /logout
-Log out.
-###
-exports.logout = (req, res) ->
-  req.logout()
-  res.redirect "/"
-
-###
-GET /signup
-Signup page.
-###
-exports.getSignup = (req, res) ->
-  return res.redirect("/")  if req.user
-  res.render "account/signup",
-    title: "Create Account"
-
-###
-POST /signup
-Create a new local account.
-@param email
-@param password
-###
-exports.postSignup = (req, res, next) ->
-  req.assert("email", "Email is not valid").isEmail()
-  req.assert("password", "Password must be at least 4 characters long").len 4
-  req.assert("confirmPassword", "Passwords do not match").equals req.body.password
-  if errors = req.validationErrors()
-    return res.render "account/signup", errors: errors
-
-  user = new User email: req.body.email, password: req.body.password
-  user.save (err) ->
-    if err
-      if err.code is 11000
-        return res.render "account/signup", msg: "User with that email already exists."
-    req.logIn user, (err) ->
-      return next(err)  if err
-      res.redirect "/"
-
-exports.removePicture = (req, res) ->
-  req.user.profile.picture = ""
-  req.user.save (err) ->
-    render_data = title: "Account Management"
-    render_data.msg = "Unable to remove picture." if err
-    res.render 'account/profile', render_data      
-
-###
-GET /account
-Profile page.
-###
-exports.getAccount = (req, res) ->
-  res.render "account/profile",
-    title: "Account Management"
-
-###
-POST /account/profile
-Update profile information.
-###
-exports.postUpdateProfile = (req, res, next) ->
-  User.findById req.user.id, (err, user) ->
-    return next(err)  if err
-    user.email = req.body.email or ""
-    user.profile.name = req.body.name or ""
-    user.profile.gender = req.body.gender or ""
-    user.profile.location = req.body.location or ""
-    user.profile.website = req.body.website or ""
-    user.save (err) ->
-      return next(err)  if err
-      res.redirect "/account"
-
-###
-POST /account/password
-Update current password.
-@param password
-###
 exports.postUpdatePassword = (req, res, next) ->
   req.assert("password", "Password must be at least 4 characters long").len 4
   req.assert("confirmPassword", "Passwords do not match").equals req.body.password
@@ -160,25 +62,6 @@ exports.getOauthUnlink = (req, res, next) ->
 
       res.redirect "/account"
 
-###
-GET /reset/:token
-Reset Password page.
-###
-exports.getReset = (req, res) ->
-  return res.redirect("/")  if req.isAuthenticated()
-  User.findOne(resetPasswordToken: req.params.token).where("resetPasswordExpires").gt(Date.now()).exec (err, user) ->
-    unless user
-      # req.flash "errors",
-      #   msg: "Password reset token is invalid or has expired."
-
-      return res.redirect("/forgot")
-    res.render "account/reset",
-      title: "Password Reset"
-
-###
-POST /reset/:token
-Process the reset password request.
-###
 exports.postReset = (req, res, next) ->
   req.assert("password", "Password must be at least 4 characters long.").len 4
   req.assert("confirm", "Passwords must match.").equals req.body.password
@@ -209,10 +92,6 @@ exports.postReset = (req, res, next) ->
           # req.flash "success", msg: "Success! Your password has been changed."
           res.redirect '/'
   .catch next
-
-exports.getForgot = (req, res) ->
-  return res.redirect("/")  if req.isAuthenticated()
-  res.render "account/forgot", title: "Forgot Password"
 
 exports.postForgot = (req, res, next) ->
   req.assert("email", "Please enter a valid email address.").isEmail()
