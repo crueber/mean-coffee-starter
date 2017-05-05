@@ -1,5 +1,12 @@
 version: '2'
 services:
+  client:
+    build: ./client
+    volumes:
+      - ./client:/usr/src/app
+    command: "sh -c 'yarn && yarn run dev'"
+    ports:
+      - 1338:1338
   server:
     build: ./server
     volumes:
