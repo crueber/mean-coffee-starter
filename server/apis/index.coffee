@@ -1,24 +1,29 @@
-path         = require 'path'
-fs           = require 'fs'
 express      = require 'express'
-passportConf = require '../config/auth'
 
-excludes = [ 'index', '.DS_Store' ]
-apis = {}
+apis = dir_loader "#{__dirname}/.", 
+  prefix: 'api routes', 
+  excludes: [ 'index', '.DS_Store' ]
 
-###
-# Load apis.
-###
-files = fs.readdirSync(__dirname)
-for file in files
-  name = path.basename(file, '.coffee')
-  if excludes.indexOf(name) == -1
-    logger.debug 'Loading api: ' + name
-    apis[name] = require './' + name
+insecure_routes = (router) ->
+  router.post '/login', apis.user.post_login
+  router.post '/user', apis.user.verify_local_prereqs, apis.user.post_user
 
-module.exports = (app) ->
-  router = express.Router()
+  router
 
+secure_routes = (router) ->
+  router.use apis.user.verify_auth
+
+  router.get '/user', apis.user.get_user
+  router.put '/user', apis.user.update_user
+  router.post '/user/password', apis.user.post_user_password
+  router.delete '/user', apis.user.delete_user
   # router.get "/api/linkedin", passportConf.isAuthenticated, passportConf.isAuthorized, apis.linkedin.getInfo
   
   router
+
+module.exports = (app) ->
+  router = express.Router()
+  router.use insecure_routes(express.Router())
+  router.use secure_routes(express.Router())
+  router
+

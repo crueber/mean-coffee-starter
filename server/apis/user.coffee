@@ -9,6 +9,7 @@ set_jwt_from_user = (user, res) ->
 
 
 module.exports = 
+  verify_auth: (req, res, next) ->
   verify_local_prereqs: (req, res, next) ->
     req.assert("email", "Email is not valid").isEmail()
     req.assert("password", "Password cannot be blank").notEmpty()
