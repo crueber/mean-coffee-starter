@@ -1,6 +1,6 @@
 express      = require 'express'
 
-apis = dir_loader "#{__dirname}/.", 
+apis = dir_loader __dirname, 
   prefix: 'api routes', 
   excludes: [ 'index', '.DS_Store' ]
 
