@@ -40,7 +40,7 @@ module.exports =
     res.json req.user
 
   update_user: (req, res) ->
-    User.findById req.user.id, (err, user) ->
+    User.findById req.user.id
     .then (user) ->
       user.email = req.body.email or user.email
       user.profile.name = req.body.name or user.profile.name
