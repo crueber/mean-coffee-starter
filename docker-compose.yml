@@ -14,6 +14,7 @@ services:
     command: "sh -c 'yarn && npm run dev'"
     ports:
       - 1337:1337
+      - 3123:3123
     environment:
       PORT: 1337
       SESSION_SECRET: THISISSPANSTARTER

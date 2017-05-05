@@ -10,4 +10,4 @@ COPY . /usr/src/app
 
 ENV PORT 1338
 EXPOSE 1338
-CMD [ "npm", "start" ]
+CMD [ "yarn", "run", "build" ]
