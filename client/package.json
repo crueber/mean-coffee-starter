@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
-    "serve": "http-server -o -c 1 -a localhost",
+    "serve": "http-server -c 1 -p 1338",
     "dev": "npm-run-all --parallel watchify serve",
     "lint": "eslint --ext .js,.vue src test/unit",
     "test": "karma start karma.conf.js",

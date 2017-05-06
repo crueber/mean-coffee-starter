@@ -1,12 +1,5 @@
 version: '2'
 services:
-  client:
-    build: ./client
-    volumes:
-      - ./client:/usr/src/app
-    command: "sh -c 'yarn && yarn run dev'"
-    ports:
-      - 1338:1338
   server:
     build: ./server
     volumes:
@@ -14,13 +7,20 @@ services:
     command: "sh -c 'yarn && npm run dev'"
     ports:
       - 1337:1337
-      - 3123:3123
     environment:
       PORT: 1337
       SESSION_SECRET: THISISSPANSTARTER
       MONGODB: mongodb://mongo:27017/spanstarter
       REDISHOST: redis
       REDISPORT: 6379
+  client:
+    build: ./client
+    volumes:
+      - ./client:/usr/src/app
+    command: "sh -c 'yarn && npm run dev'"
+    ports:
+      - 1338:1338
+      - 3123:3123
   redis:
     image: 'redis:3.2'
     ports:
