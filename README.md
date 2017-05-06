@@ -61,6 +61,13 @@ Minimum Browsers Requirements based on libraries: IE11+, all evergreen browsers.
 
 * This starter is three major rewrites removed from Sahat Yalkabov's amazing and fantastic [Hackathon Starter 2.0](https://github.com/sahat/hackathon-starter). The changes are so fundamental from that starter at this point that it's not even useful to mention all of them here. Some big ticket items include using appropriate compilers for coffee and es6, ripping out all the extra pieces for test API calls to several services, removing most all of the OAuth agents, and many other things.
 
+## Useful Docker Commands
+
+Clean up commands for untagged and stopped images:
+```
+docker ps -aqf status=exited | xargs docker rm
+docker images -qf dangling=true | xargs docker rmi
+```
 
 ## Useful Resources
 
