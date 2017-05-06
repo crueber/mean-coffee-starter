@@ -9,7 +9,6 @@ services:
       - 1337:1337
     environment:
       PORT: 1337
-      SESSION_SECRET: THISISSPANSTARTER
       MONGODB: mongodb://mongo:27017/spanstarter
       REDISHOST: redis
       REDISPORT: 6379
