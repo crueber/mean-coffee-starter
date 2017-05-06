@@ -1,6 +1,6 @@
 
 startTime = new Date()
-require 'preqreqs'
+require './prereqs'
 dir_loader './config', args: [app], prefix: 'config'
 require('./config/databases')(app)
 dir_loader './lib', args: [app], prefix: 'lib'
