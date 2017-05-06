@@ -18,7 +18,7 @@ module.exports =
     res.status(403).json errors
 
   post_login: (req, res, next) ->
-    passport.authenticate("local", (err, user, info) ->
+    passport.authenticate("local", {session: false}, (err, user, info) ->
       return next(err) if err
       set_jwt_from_user user, res
     ) req, res, next

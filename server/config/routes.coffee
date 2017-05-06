@@ -10,10 +10,10 @@ auth_router = (app) ->
   # router.get "/logout", controllers.user.logout
 
   router.get "/auth/google", passport.authenticate("google", scope: "profile email")
-  router.get "/auth/google/callback", passport.authenticate("google", failureRedirect: "/login"), (req, res) ->
+  router.get "/auth/google/callback", passport.authenticate("google", failureRedirect: "/login", session: false), (req, res) ->
     res.redirect req.session.returnTo or "/"
   router.get "/auth/linkedin", passport.authenticate("linkedin", state: "SOME STATE" )
-  router.get "/auth/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login"), (req, res) ->
+  router.get "/auth/linkedin/callback", passport.authenticate("linkedin", failureRedirect: "/login", session: false), (req, res) ->
     res.redirect req.session.returnTo or "/"
 
   # router.post "/login", controllers.user.postLogin
@@ -31,7 +31,7 @@ auth_router = (app) ->
 
 page_router = (app) ->
   router = express.Router()
-  router.get "/", passportConf.isAuthenticated, controllers.home.index
+  # router.get "/", passportConf.isAuthenticated, controllers.home.index
   router
 
 module.exports = (app) ->
