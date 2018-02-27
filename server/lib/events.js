@@ -8,12 +8,14 @@ module.exports = function() {
     STARTUP_ROUTES: 'startup-routes',
     STARTUP_ROUTES_COMPLETE: 'startup-routes-complete',
     STARTUP_COMPLETE: 'startup-complete',
+
     MONGO_CONNECTED: 'db-mongo-connected',
     MONGO_DISCONNECTED: 'db-mongo-disconnected',
     POSTGRES_CONNECTED: 'db-postgres-connected',
     POSTGRES_DISCONNECTED: 'db-postgres-disconnected',
     REDIS_CONNECTED: 'db-redis-connected',
     REDIS_DISCONNECTED: 'db-redis-disconnected',
+
     SERVER_LISTENING: 'server-listening',
     SHUTDOWN: 'shutdown-requested',
     APP_SHUTDOWN: 'shutdown-prepare'

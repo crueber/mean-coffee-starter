@@ -1,6 +1,12 @@
 
 const startTime = new Date();
-require('./prereqs');
+
+global.logger = require('./config/logger')();
+global.dir_loader = require('./lib/dir_loader');
+global.vent = new (require('events'))();
+global.events = require('./lib/events')();
+global.app = require('express')();
+
 dir_loader('./config', { args: [app], prefix: 'config' });
 require('./config/databases')(app);
 dir_loader('./lib', { args: [app], prefix: 'lib' });
